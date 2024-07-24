@@ -1,0 +1,41 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/images/about.png</file>
+        <file>images/images/aboutIcon.png</file>
+        <file>images/images/aboutQtIcon.png</file>
+        <file>images/images/circle.png</file>
+        <file>images/images/close.png</file>
+        <file>images/images/copyIcon.png</file>
+        <file>images/images/cutIcon.png</file>
+        <file>images/images/eraser.png</file>
+        <file>images/images/open.png</file>
+        <file>images/images/pasteIcon.png</file>
+        <file>images/images/pen.png</file>
+        <file>images/images/quitIcon.png</file>
+        <file>images/images/rectangle.png</file>
+        <file>images/images/redoIcon.png</file>
+        <file>images/images/save.png</file>
+        <file>images/images/undoIcon.png</file>
+        <file>images/images/circle_active.png</file>
+        <file>images/images/circle_cursor.png</file>
+        <file>images/images/cursor.png</file>
+        <file>images/images/cursor_active.png</file>
+        <file>images/images/ellipse.png</file>
+        <file>images/images/eraser_active.png</file>
+        <file>images/images/eraser_cursor.png</file>
+        <file>images/images/pen_active.png</file>
+        <file>images/images/pen_cursor.png</file>
+        <file>images/images/pen_cursor1.png</file>
+        <file>images/images/pen_style_dashed.png</file>
+        <file>images/images/pen_style_dot_dashed.png</file>
+        <file>images/images/pen_style_dotted.png</file>
+        <file>images/images/pen_style_solid.png</file>
+        <file>images/images/quick.png</file>
+        <file>images/images/rectangle1.png</file>
+        <file>images/images/rectangle1_active.png</file>
+        <file>images/images/rectangle_cursor.png</file>
+        <file>images/images/star.png</file>
+        <file>images/images/star_active.png</file>
+        <file>images/images/star_cursor.png</file>
+    </qresource>
+</RCC>
