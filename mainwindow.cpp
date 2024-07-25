@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    customView = new CustomGraphicsView(selectedColor,ui->penWidthSpinBox->value(), this);
+    customView = new CustomGraphicsView(selectedColor,ui->penWidthSpinBox->value(), ui->penStyleComboBox->currentIndex(), this);
     scene = new QGraphicsScene(this);
     customView->setScene(scene);
 

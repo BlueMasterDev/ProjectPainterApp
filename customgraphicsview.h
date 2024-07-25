@@ -9,7 +9,7 @@ class CustomGraphicsView : public QGraphicsView
 
 public:
     explicit CustomGraphicsView(QWidget *parent = nullptr);
-    CustomGraphicsView(QColor defaultPenColor, int defaultpenWidth, QWidget *parent = nullptr);
+    CustomGraphicsView(QColor defaultPenColor, int defaultPenWidth, int defaultPenStyleIndex, QWidget *parent = nullptr);
 
     void setPenColor(const QColor &color);
     void setPenWidth(int width);
@@ -23,9 +23,7 @@ protected:
 private:
     bool drawing;
     QPointF lastPoint;
-    QColor penColor;
-    int penWidth;
-    Qt::PenStyle penStyle;
+    QPen pen;
 };
 
 #endif // CUSTOMGRAPHICSVIEW_H
