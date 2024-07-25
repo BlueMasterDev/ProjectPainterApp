@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     customView->setScene(scene);
 
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
+    delete ui->graphicsView;
+    ui->graphicsView = nullptr;
 
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
     // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
@@ -35,7 +37,6 @@ void MainWindow::onColorButtonClicked()
     if (color.isValid()) {
         selectedColor = color;
         ui->penColorButton->setStyleSheet(QString("background-color: %1").arg(color.name()));
-        //dynamic_cast<CustomGraphicsView*>(ui->graphicsView)->setPenColor(color);
         customView->setPenColor(color);
     }
 }
@@ -53,13 +54,11 @@ void MainWindow::onColorButtonClicked()
 
 void MainWindow::on_penWidthSpinBox_valueChanged(int arg1)
 {
-    //CustomGraphicsView* customView = dynamic_cast<CustomGraphicsView*>(ui->graphicsView);
     customView->setPenWidth(arg1);
 }
 
 void MainWindow::on_penWidthSpinBox_textChanged(const QString &arg1)
 {
-    //CustomGraphicsView* customView = dynamic_cast<CustomGraphicsView*>(ui->graphicsView);
     customView->setPenWidth(arg1.toInt());
 }
 
