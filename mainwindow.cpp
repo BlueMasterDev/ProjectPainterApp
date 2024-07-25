@@ -8,12 +8,12 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , selectedColor(Qt::yellow)
+    , selectedColor(Qt::black)
     // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
 
-    customView = new CustomGraphicsView(this);
+    customView = new CustomGraphicsView(selectedColor,ui->penWidthSpinBox->value(), this);
     scene = new QGraphicsScene(this);
     customView->setScene(scene);
 

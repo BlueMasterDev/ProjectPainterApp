@@ -7,6 +7,11 @@ CustomGraphicsView::CustomGraphicsView(QWidget *parent)
 {
 }
 
+CustomGraphicsView::CustomGraphicsView(QColor defaultPenColor, int defaultpenWidth, QWidget *parent)
+    : QGraphicsView(parent), drawing(false), penColor(defaultPenColor), penWidth(defaultpenWidth)
+{
+}
+
 void CustomGraphicsView::setPenColor(const QColor &color)
 {
     penColor = color;

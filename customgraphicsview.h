@@ -9,6 +9,7 @@ class CustomGraphicsView : public QGraphicsView
 
 public:
     explicit CustomGraphicsView(QWidget *parent = nullptr);
+    CustomGraphicsView(QColor defaultPenColor, int defaultpenWidth, QWidget *parent = nullptr);
 
     void setPenColor(const QColor &color);
     void setPenWidth(int width);
