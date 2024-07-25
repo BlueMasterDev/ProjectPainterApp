@@ -48,12 +48,15 @@ private slots:
     void on_actionLoad_triggered();
     void on_actionAdd_image_triggered();
     void on_actionAbout_this_app_triggered();
+    void on_actionUndo_triggered();
+    // void on_actionRedo_triggered();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QColor selectedColor;
     Graphics_Save_Load *graphics_Save_Load;
+    CustomGraphicsView *customView ;
 
 };
 

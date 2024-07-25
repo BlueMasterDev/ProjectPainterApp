@@ -56,7 +56,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     scene = new QGraphicsScene(this);
-    auto *customView = new CustomGraphicsView(this);
+
     customView->setScene(scene);
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
@@ -117,3 +117,14 @@ void MainWindow::on_actionAbout_this_app_triggered()
 {
     QMessageBox::about(this, "Message", "Membre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
 }
+
+void MainWindow::on_actionUndo_triggered()
+{
+    QGraphicsItem *item = undoStack.pop();
+    scene->removeItem(item);
+    delete item;
+}
+// void MainWindow::on_actionRedo_triggered()
+// {
+//     scene->addItem();
+// }
