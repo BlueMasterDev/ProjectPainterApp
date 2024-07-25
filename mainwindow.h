@@ -8,6 +8,7 @@
 #include <actionhandler.h>
 #include "graphics_save_load.h"
 #include "customgraphicsview.h"
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,6 +21,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void setListWidgetItems();
 
 private slots:
     // Pen Properties
@@ -60,6 +63,7 @@ private:
 
     void setupActions();
     Graphics_Save_Load *graphics_Save_Load;
+    QListWidget *listWidget;
 
 };
 

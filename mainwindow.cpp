@@ -38,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent)
     //maj curseur lié aux actions
     connect(actionHandler, &ActionHandler::cursorChanged, this, &MainWindow::updateCursor);
 
+    // Initialisation de la ListWidget avec tous les items
+    setListWidgetItems();
 
     // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
 
@@ -47,6 +49,44 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete graphics_Save_Load;
+}
+
+void MainWindow::setListWidgetItems()
+{
+    listWidget = ui->listWidgetShapeItems;
+
+    // Mise en place des icônes pour les items
+    QPixmap pixLearn(":/images/images/quick.png");
+    QPixmap pixEllipse(":/images/images/circle.png");
+    QPixmap pixRect(":/images/images/rectangle.png");
+    QPixmap pixStar(":/images/images/star.png");
+
+    // Création des items pour la listwidget
+    QListWidgetItem *itemLearn = new QListWidgetItem;
+    QListWidgetItem *itemEllipse = new QListWidgetItem;
+    QListWidgetItem *itemRect = new QListWidgetItem;
+    QListWidgetItem *itemStar = new QListWidgetItem;
+
+    // Application des icônes pour tous les items
+    itemLearn->setIcon(pixLearn);
+    itemEllipse->setIcon(pixEllipse);
+    itemRect->setIcon(pixRect);
+    itemStar->setIcon(pixStar);
+
+    // Application du texte pour tous les items
+    itemLearn->setText("Learn");
+    itemEllipse->setText("Ellipse");
+    itemRect->setText("Rectangle");
+    itemStar->setText("Star");
+
+    // Ajout de tous les items dans la listwidget
+    listWidget->addItem(itemLearn);
+    listWidget->addItem(itemEllipse);
+    listWidget->addItem(itemRect);
+    listWidget->addItem(itemStar);
+
+    // Activation du drag and drop
+    listWidget->setDragEnabled(true);
 }
 
 // -----------------------------------------------------------------------------------------------------------------

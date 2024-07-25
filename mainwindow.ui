@@ -373,44 +373,7 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_11">
            <item>
-            <widget class="QLabel" name="filledEllipseLabel">
-             <property name="styleSheet">
-              <string notr="true">image: url(:/images/images/ellipse.png);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="qtQuickLabel">
-             <property name="styleSheet">
-              <string notr="true">image: url(:/images/images/quick.png);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="filledRectangleLabel">
-             <property name="styleSheet">
-              <string notr="true">image: url(:/images/images/rectangle.png);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="filledStarLabel">
-             <property name="styleSheet">
-              <string notr="true">image: url(:/images/images/star.png);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
+            <widget class="QListWidget" name="listWidgetShapeItems"/>
            </item>
           </layout>
          </widget>
