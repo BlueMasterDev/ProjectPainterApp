@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     delete ui->graphicsView;
     ui->graphicsView = nullptr;
 
-    graphics_Save_Load = new Graphics_Save_Load(ui->graphicsView);
+    graphics_Save_Load = new Graphics_Save_Load(customView);
 
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
 }
