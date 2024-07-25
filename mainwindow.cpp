@@ -3,6 +3,7 @@
 #include <QColorDialog>
 #include <QMouseEvent>
 #include <QPen>
+#include <QIcon>
 
 CustomGraphicsView::CustomGraphicsView(QWidget *parent)
     : QGraphicsView(parent), drawing(false), penColor(Qt::black), penWidth(5)
@@ -48,6 +49,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , selectedColor(Qt::yellow)
+    , actionHandler(new ActionHandler(this))
     // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
@@ -60,6 +62,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView = customView;
 
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
+
+    connect(ui->actionEraser, &QAction::triggered, this, &MainWindow::changeIcon);
+
+    // Liste des actions
+    QList<QAction*> actions = { ui->actionEraser, ui->actionCursor, ui->actionPen, ui->actionEllipse, ui->actionStar, ui->actionRectangle };
+
+    // Configurer les icônes pour les actions dans ActionHandler
+    actionHandler->configureActions(actions);
+
     // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
 }
 
@@ -77,6 +88,11 @@ void MainWindow::onColorButtonClicked()
         ui->penColorButton->setStyleSheet(QString("background-color: %1").arg(color.name()));
         dynamic_cast<CustomGraphicsView*>(ui->graphicsView)->setPenColor(color);
     }
+}
+
+void MainWindow::changeIcon()
+{
+    ui->actionEraser->setIcon(QIcon(":/images/images/eraser_active.png"));
 }
 
 // void MainWindow::onColorButton_2Clicked()

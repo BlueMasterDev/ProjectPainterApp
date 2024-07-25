@@ -5,7 +5,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QColor>
-
+#include <QAction>
+#include <actionhandler.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -42,12 +43,14 @@ public:
 
 private slots:
     void onColorButtonClicked();
+    void changeIcon();
     // void onColorButton_2Clicked();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QColor selectedColor;
+    ActionHandler *actionHandler;
     // QColor selectedColor_2;
 };
 
