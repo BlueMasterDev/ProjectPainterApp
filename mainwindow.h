@@ -34,14 +34,12 @@ private slots:
     void on_colorButton_7_clicked();
     void on_penStyleComboBox_currentIndexChanged(int index);
 
+    // Files Properties
     void on_actionQuit_triggered();
     void on_actionSave_triggered();
     void on_actionLoad_triggered();
     void on_actionAdd_image_triggered();
     void on_actionAbout_this_app_triggered();
-    // void on_actionUndo_triggered();
-    // void on_actionRedo_triggered();
-    // void onColorButton_2Clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -49,7 +47,6 @@ private:
     QGraphicsScene *scene;
     QColor selectedColor;
     Graphics_Save_Load *graphics_Save_Load;
-
 };
 
 #endif // MAINWINDOW_H

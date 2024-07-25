@@ -5,9 +5,7 @@
 #include <QPen>
 #include <QMessageBox>
 #include <QClipboard>
-#include "graphics_save_load.h"
 #include <QFileDialog>
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -50,7 +48,6 @@ void MainWindow::onColorButtonClicked()
         customView->setPenColor(color);
     }
 }
-
 
 void MainWindow::on_penWidthSpinBox_valueChanged(int arg1)
 {
@@ -103,11 +100,7 @@ void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
 }
 
 // -----------------------------------------------------------------------------------------------------------------
-
-// void MainWindow::onColorButton_2Clicked()
-// {
-//     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
-
+// File Properties - About
 
 void MainWindow::on_actionSave_triggered()
 {
@@ -143,14 +136,8 @@ void MainWindow::on_actionQuit_triggered()
     QApplication::quit();
 }
 
-// void MainWindow::on_actionUndo_triggered()
-// {
-//     QGraphicsItem *item = undoStack.pop();
-//     scene->removeItem(item);
-//     delete item;
-// }
+// -----------------------------------------------------------------------------------------------------------------
 
-// void MainWindow::on_actionRedo_triggered()
+// void MainWindow::onColorButton_2Clicked()
 // {
-//     scene->addItem();
-// }
+//     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");

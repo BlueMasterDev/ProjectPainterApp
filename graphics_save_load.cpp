@@ -10,11 +10,9 @@ Graphics_Save_Load::Graphics_Save_Load(QGraphicsView *view)
 {
 }
 /**
- * Save the drawing area
- * @file graphics_save_load.cpp
- * @param QString &filePath
+ * @param QString &filePath -> chemin du fichier charger
+ * @brief Save the drawing area
 */
-
 bool Graphics_Save_Load::saveScene(const QString &filePath)
 {
     if (!scene) {
@@ -24,7 +22,7 @@ bool Graphics_Save_Load::saveScene(const QString &filePath)
  * Déterminer la zone de la scène à capturer
 */
     QRectF sceneRect = scene->sceneRect();
- /**
+/**
  * Créer une image de la taille de la scène
 */
     QImage image(sceneRect.size().toSize(), QImage::Format_ARGB32);
@@ -44,8 +42,8 @@ bool Graphics_Save_Load::saveScene(const QString &filePath)
     return image.save(filePath);
 }
 /**
- * load Image
- * @param QString &filePath
+ * @param QString &filePath - chemin du fichier à charger
+ * @brief load Image
 */
 bool Graphics_Save_Load::loadScene(const QString &filePath)
 {
@@ -72,8 +70,8 @@ bool Graphics_Save_Load::loadScene(const QString &filePath)
     return true;
 }
 /**
- * Add Image to graphics
- * @param QString &filePath
+ * @param QString &filePath chemin du fichier à ajouter
+ * @brief Add Image to graphics
 */
 bool Graphics_Save_Load::addImage(const QString &filePath)
 {
