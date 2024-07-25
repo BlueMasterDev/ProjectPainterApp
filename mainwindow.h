@@ -47,6 +47,7 @@ private slots:
     void on_actionSave_triggered();
     void on_actionLoad_triggered();
     void on_actionAdd_image_triggered();
+    void on_actionAbout_this_app_triggered();
 
 private:
     Ui::MainWindow *ui;

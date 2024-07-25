@@ -112,3 +112,8 @@ void MainWindow::on_actionAdd_image_triggered()
         graphics_Save_Load->addImage(filePath);
     }
 }
+
+void MainWindow::on_actionAbout_this_app_triggered()
+{
+    QMessageBox::about(this, "Message", "Membre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
+}
