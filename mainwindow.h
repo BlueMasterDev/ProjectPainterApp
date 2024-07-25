@@ -22,12 +22,19 @@ public:
     ~MainWindow();
 
 private slots:
+    // Pen Properties
     void onColorButtonClicked();
-    // void onColorButton_2Clicked();
-
     void on_penWidthSpinBox_valueChanged(int arg1);
-
     void on_penWidthSpinBox_textChanged(const QString &arg1);
+    void on_colorButton_1_clicked();
+    void on_colorButton_2_clicked();
+    void on_colorButton_3_clicked();
+    void on_colorButton_4_clicked();
+    void on_colorButton_5_clicked();
+    void on_colorButton_6_clicked();
+    void on_colorButton_7_clicked();
+
+    // void onColorButton_2Clicked();
 
 private:
     Ui::MainWindow *ui;
