@@ -55,11 +55,11 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new QGraphicsScene(this);
     auto *customView = new CustomGraphicsView(this);
     customView->setScene(scene);
-    ui->horizontalLayout->replaceWidget(ui->graphicsView, customView);
+    ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
     ui->graphicsView = customView;
 
-    connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
+    connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
     // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
 }
 
@@ -74,7 +74,7 @@ void MainWindow::onColorButtonClicked()
 
     if (color.isValid()) {
         selectedColor = color;
-        ui->pushButton->setStyleSheet(QString("background-color: %1").arg(color.name()));
+        ui->penColorButton->setStyleSheet(QString("background-color: %1").arg(color.name()));
         dynamic_cast<CustomGraphicsView*>(ui->graphicsView)->setPenColor(color);
     }
 }
