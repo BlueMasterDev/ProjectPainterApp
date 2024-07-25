@@ -143,12 +143,12 @@ void MainWindow::on_actionQuit_triggered()
     QApplication::quit();
 }
 
-void MainWindow::on_actionUndo_triggered()
-{
-    QGraphicsItem *item = undoStack.pop();
-    scene->removeItem(item);
-    delete item;
-}
+// void MainWindow::on_actionUndo_triggered()
+// {
+//     QGraphicsItem *item = undoStack.pop();
+//     scene->removeItem(item);
+//     delete item;
+// }
 
 // void MainWindow::on_actionRedo_triggered()
 // {

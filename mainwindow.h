@@ -1,18 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "customgraphicsview.h"
-
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QColor>
+
 #include "graphics_save_load.h"
+#include "customgraphicsview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-
-
 
 class MainWindow : public QMainWindow
 {
@@ -41,7 +39,7 @@ private slots:
     void on_actionLoad_triggered();
     void on_actionAdd_image_triggered();
     void on_actionAbout_this_app_triggered();
-    void on_actionUndo_triggered();
+    // void on_actionUndo_triggered();
     // void on_actionRedo_triggered();
     // void onColorButton_2Clicked();
 
@@ -51,7 +49,6 @@ private:
     QGraphicsScene *scene;
     QColor selectedColor;
     Graphics_Save_Load *graphics_Save_Load;
-    CustomGraphicsView *customView ;
 
 };
 
