@@ -169,7 +169,7 @@ void MainWindow::onActionTriggered() {
 
 void MainWindow::updateCursor(const QCursor& cursor) {
     // Mettre à jour le curseur de la vue graphique
-    ui->graphicsView->setCursor(cursor);
+    customView->setCursor(cursor);
 }
 
 // -----------------------------------------------------------------------
