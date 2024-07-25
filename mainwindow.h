@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QColor>
+#include "graphics_save_load.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,21 +43,17 @@ public:
 
 private slots:
     void onColorButtonClicked();
-    // void onColorButton_2Clicked();
     void on_actionQuit_triggered();
-    void on_actionCopy_triggered();
-    void on_actionCut_triggered();
-    void on_actionPaste_triggered();
-    void on_actionUndo_triggered();
-    void on_actionRedo_triggered();
-    void on_actionAbout_triggered();
-    void on_actionAbout_Qt_triggered();
+    void on_actionSave_triggered();
+    void on_actionLoad_triggered();
+    void on_actionAdd_image_triggered();
 
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     QColor selectedColor;
-    // QColor selectedColor_2;
+    Graphics_Save_Load *graphics_Save_Load;
+
 };
 
 #endif // MAINWINDOW_H

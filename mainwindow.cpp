@@ -4,6 +4,9 @@
 #include <QMouseEvent>
 #include <QPen>
 #include <QMessageBox>
+#include <QClipboard>
+#include "graphics_save_load.h"
+#include <QFileDialog>
 
 CustomGraphicsView::CustomGraphicsView(QWidget *parent)
     : QGraphicsView(parent), drawing(false), penColor(Qt::black), penWidth(5)
@@ -49,7 +52,6 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , selectedColor(Qt::yellow)
-    // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
 
@@ -60,13 +62,15 @@ MainWindow::MainWindow(QWidget *parent)
     delete ui->graphicsView;
     ui->graphicsView = customView;
 
+    graphics_Save_Load = new Graphics_Save_Load(ui->graphicsView);
+
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
-    // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete graphics_Save_Load;
 }
 
 void MainWindow::onColorButtonClicked()
@@ -80,54 +84,31 @@ void MainWindow::onColorButtonClicked()
     }
 }
 
-// void MainWindow::onColorButton_2Clicked()
-// {
-//     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
-
-//     if (color.isValid()) {
-//         selectedColor_2 = color;
-//         ui->toolButton_2->setStyleSheet(QString("background-color: %1").arg(color.name()));
-//         dynamic_cast<CustomGraphicsView*>(ui->graphicsView)->setPenColor(color);
-//     }
-// }
-
-
 void MainWindow::on_actionQuit_triggered()
 {
     QApplication::quit();
 }
 
-void MainWindow::on_actionCopy_triggered()
+void MainWindow::on_actionSave_triggered()
 {
-    ui->textEdit->copy();
+    QString filePath = QFileDialog::getSaveFileName(this, "Save File", "NomImage", "Images (*.png *.jpg)");
+    if (!filePath.isEmpty()) {
+        graphics_Save_Load->saveScene(filePath);
+    }
 }
 
-void MainWindow::on_actionCut_triggered()
+void MainWindow::on_actionLoad_triggered()
 {
-    ui->textEdit->cut();
+    QString filePath = QFileDialog::getOpenFileName(this, "Load File", "", "Images (*.png *.jpg)");
+    if (!filePath.isEmpty()) {
+        graphics_Save_Load->loadScene(filePath);
+    }
 }
 
-void MainWindow::on_actionPaste_triggered()
+void MainWindow::on_actionAdd_image_triggered()
 {
-    ui->textEdit->paste();
-}
-
-void MainWindow::on_actionUndo_triggered()
-{
-    ui->textEdit->undo();
-}
-
-void MainWindow::on_actionRedo_triggered()
-{
-    ui->textEdit->redo();
-}
-
-void MainWindow::on_actionAbout_triggered()
-{
-    QMessageBox::about(this, "Message", "Test");
-}
-
-void MainWindow::on_actionAbout_Qt_triggered()
-{
-    QApplication::aboutQt();
+    QString filePath = QFileDialog::getOpenFileName(this, "Add File", "", "Images (*.png *.jpg)");
+    if (!filePath.isEmpty()) {
+        graphics_Save_Load->addImage(filePath);
+    }
 }
