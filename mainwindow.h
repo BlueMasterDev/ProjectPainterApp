@@ -43,6 +43,14 @@ public:
 private slots:
     void onColorButtonClicked();
     // void onColorButton_2Clicked();
+    void on_actionQuit_triggered();
+    void on_actionCopy_triggered();
+    void on_actionCut_triggered();
+    void on_actionPaste_triggered();
+    void on_actionUndo_triggered();
+    void on_actionRedo_triggered();
+    void on_actionAbout_triggered();
+    void on_actionAbout_Qt_triggered();
 
 private:
     Ui::MainWindow *ui;
