@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1009</width>
-    <height>682</height>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -373,7 +373,17 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_11">
            <item>
-            <widget class="QListWidget" name="listWidgetShapeItems"/>
+            <widget class="QListWidget" name="listWidgetShapeItems">
+             <property name="dragEnabled">
+              <bool>true</bool>
+             </property>
+             <property name="dragDropMode">
+              <enum>QAbstractItemView::DragOnly</enum>
+             </property>
+             <property name="defaultDropAction">
+              <enum>Qt::CopyAction</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>

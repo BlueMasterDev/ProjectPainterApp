@@ -9,6 +9,13 @@
 #include "graphics_save_load.h"
 #include "customgraphicsview.h"
 #include <QListWidget>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsRectItem>
+#include <QGraphicsPolygonItem>
+#include <QMimeData>
+#include <QDrag>
+#include <QDropEvent>
+#include <QPolygonF>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -60,11 +67,19 @@ private:
     QColor selectedColor;
     ActionHandler *actionHandler;
     // QColor selectedColor_2;
-
     void setupActions();
+
     Graphics_Save_Load *graphics_Save_Load;
     QListWidget *listWidget;
 
+    QPointF mapToScene(QPoint);
+
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dragLeaveEvent(QDragLeaveEvent *event) override;
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
 };
 
 #endif // MAINWINDOW_H
