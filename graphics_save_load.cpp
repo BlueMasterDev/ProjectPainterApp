@@ -1,3 +1,7 @@
+/**
+ * @file graphics_save_load.h
+ * @brief Description de la classe graphics_save_load
+*/
 #include "graphics_save_load.h"
 #include <QFileDialog>
 #include <QImage>
@@ -10,8 +14,8 @@ Graphics_Save_Load::Graphics_Save_Load(QGraphicsView *view)
 {
 }
 /**
- * @param QString &filePath -> chemin du fichier charger
  * @brief Save the drawing area
+ * @param QString &filePath -> chemin du fichier charger
 */
 bool Graphics_Save_Load::saveScene(const QString &filePath)
 {
@@ -42,8 +46,8 @@ bool Graphics_Save_Load::saveScene(const QString &filePath)
     return image.save(filePath);
 }
 /**
- * @param QString &filePath - chemin du fichier à charger
  * @brief load Image
+ * @param QString &filePath - chemin du fichier à charger
 */
 bool Graphics_Save_Load::loadScene(const QString &filePath)
 {
@@ -70,8 +74,8 @@ bool Graphics_Save_Load::loadScene(const QString &filePath)
     return true;
 }
 /**
- * @param QString &filePath chemin du fichier à ajouter
  * @brief Add Image to graphics
+ * @param QString &filePath chemin du fichier à ajouter
 */
 bool Graphics_Save_Load::addImage(const QString &filePath)
 {
