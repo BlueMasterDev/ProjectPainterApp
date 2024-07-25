@@ -89,6 +89,11 @@ void MainWindow::on_colorButton_7_clicked()
     customView->setPenColor(QColor(255, 0, 0));
 }
 
+void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
+{
+    customView->setPenStyle(index);
+}
+
 // -----------------------------------------------------------------------------------------------------------------
 
 // void MainWindow::onColorButton_2Clicked()

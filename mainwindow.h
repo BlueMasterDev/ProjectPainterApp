@@ -33,6 +33,7 @@ private slots:
     void on_colorButton_5_clicked();
     void on_colorButton_6_clicked();
     void on_colorButton_7_clicked();
+    void on_penStyleComboBox_currentIndexChanged(int index);
 
     // void onColorButton_2Clicked();
 

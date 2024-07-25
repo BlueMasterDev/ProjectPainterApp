@@ -10,6 +10,7 @@ CustomGraphicsView::CustomGraphicsView(QWidget *parent)
 CustomGraphicsView::CustomGraphicsView(QColor defaultPenColor, int defaultpenWidth, QWidget *parent)
     : QGraphicsView(parent), drawing(false), penColor(defaultPenColor), penWidth(defaultpenWidth)
 {
+    penStyle = Qt::SolidLine;
 }
 
 void CustomGraphicsView::setPenColor(const QColor &color)
@@ -20,6 +21,11 @@ void CustomGraphicsView::setPenColor(const QColor &color)
 void CustomGraphicsView::setPenWidth(int width)
 {
     penWidth = width;
+}
+
+void CustomGraphicsView::setPenStyle(int styleIndex)
+{
+    penStyle = static_cast<Qt::PenStyle>(styleIndex + 1); // in Qt::PenStyle 0 is no pen so we don't use it
 }
 
 void CustomGraphicsView::mousePressEvent(QMouseEvent *event)
@@ -35,6 +41,7 @@ void CustomGraphicsView::mouseMoveEvent(QMouseEvent *event)
     if ((event->buttons() & Qt::LeftButton) && drawing) {
         QPointF currentPoint = mapToScene(event->pos());
         QPen pen(penColor, penWidth);
+        pen.setStyle(penStyle);
         scene()->addLine(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y(), pen);
         lastPoint = currentPoint;
     }

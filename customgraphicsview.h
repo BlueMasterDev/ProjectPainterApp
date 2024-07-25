@@ -13,6 +13,7 @@ public:
 
     void setPenColor(const QColor &color);
     void setPenWidth(int width);
+    void setPenStyle(int styleIndex);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -24,6 +25,7 @@ private:
     QPointF lastPoint;
     QColor penColor;
     int penWidth;
+    Qt::PenStyle penStyle;
 };
 
 #endif // CUSTOMGRAPHICSVIEW_H
