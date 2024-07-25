@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>536</width>
-    <height>389</height>
+    <width>1009</width>
+    <height>682</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,79 +16,103 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="mainLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <layout class="QVBoxLayout" name="allPropertiesLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QGroupBox" name="penPropertiesGroupBox">
+         <widget class="QGroupBox" name="groupBox_3">
           <property name="title">
            <string>Pen Properties</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <item>
-            <layout class="QHBoxLayout" name="penColorHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
-              <widget class="QLabel" name="penColorLabel">
+              <widget class="QLabel" name="label">
                <property name="text">
                 <string>Pen Color</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="penColorButton">
+              <widget class="QPushButton" name="PushButton">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(0, 0, 0);</string>
+               </property>
                <property name="text">
-                <string>PushButton</string>
+                <string>                                         </string>
                </property>
               </widget>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="selectColorsHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
-              <widget class="QPushButton" name="color1Button">
+              <widget class="QPushButton" name="pushButton_8">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(85, 0, 127);</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="color2Button">
+              <widget class="QPushButton" name="pushButton_7">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(50, 14, 127);</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="color3Button">
+              <widget class="QPushButton" name="pushButton_6">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(0, 0, 255);</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="color4Button">
+              <widget class="QPushButton" name="pushButton_5">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(0, 255, 0);</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="color5Button">
+              <widget class="QPushButton" name="pushButton_4">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 0);</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="color6Button">
+              <widget class="QPushButton" name="pushButton_3">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 85, 0);</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="color7Button">
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 0, 0);</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -97,30 +121,55 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="penWidthHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QLabel" name="penWidthLabel">
+              <widget class="QLabel" name="label_2">
                <property name="text">
                 <string>Pen Width</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QSpinBox" name="penWidthSpinBox"/>
+              <widget class="QSpinBox" name="spinBox">
+               <property name="minimum">
+                <number>2</number>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="penStyleHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QLabel" name="penStyleLabel">
+              <widget class="QLabel" name="label_3">
                <property name="text">
                 <string>Pen Style</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="penStyleComboBox"/>
+              <widget class="QComboBox" name="comboBox">
+               <item>
+                <property name="text">
+                 <string>Solid</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Dashed</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Dotted</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Dot Dashed</string>
+                </property>
+               </item>
+              </widget>
              </item>
             </layout>
            </item>
@@ -128,50 +177,54 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="shapePropertiesGroupBox">
+         <widget class="QGroupBox" name="groupBox">
           <property name="title">
            <string>Shapes Properties</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
-            <layout class="QHBoxLayout" name="borderWidthHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
              <item>
-              <widget class="QLabel" name="borderWidthLabel">
+              <widget class="QLabel" name="label_4">
                <property name="text">
-                <string>Border width</string>
+                <string>Border Width</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QSpinBox" name="borderWidthSpinBox"/>
+              <widget class="QSpinBox" name="spinBox_2">
+               <property name="minimum">
+                <number>2</number>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="borderStyleHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
              <item>
-              <widget class="QLabel" name="borderStyleLabel">
+              <widget class="QLabel" name="label_8">
                <property name="text">
                 <string>Border Style</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="borderStyleComboBox"/>
+              <widget class="QComboBox" name="comboBox_2"/>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="borderColorHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
              <item>
-              <widget class="QLabel" name="borderColorLabel">
+              <widget class="QLabel" name="label_7">
                <property name="text">
                 <string>Border Color</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="borderColorButton">
+              <widget class="QPushButton" name="pushButton_9">
                <property name="text">
                 <string/>
                </property>
@@ -180,30 +233,30 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="fillStyleHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
              <item>
-              <widget class="QLabel" name="fillStyleLabel">
+              <widget class="QLabel" name="label_6">
                <property name="text">
                 <string>Fill Style</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="fillStyleComboBox"/>
+              <widget class="QComboBox" name="comboBox_3"/>
              </item>
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="fillColorHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
              <item>
-              <widget class="QLabel" name="fillColorLabel">
+              <widget class="QLabel" name="label_5">
                <property name="text">
                 <string>Fill Color</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="fillColorButton">
+              <widget class="QPushButton" name="pushButton_10">
                <property name="text">
                 <string/>
                </property>
@@ -215,22 +268,22 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="canvasPropertiesGBox">
+         <widget class="QGroupBox" name="groupBox_4">
           <property name="title">
            <string>Canvas Properties</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_7">
            <item>
-            <layout class="QVBoxLayout" name="canvasPropertiesVLayout">
+            <layout class="QVBoxLayout" name="verticalLayout_4">
              <item>
-              <widget class="QCheckBox" name="showGridCheckBox">
+              <widget class="QCheckBox" name="checkBox">
                <property name="text">
                 <string>Show Grid</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="centerSceneButton">
+              <widget class="QPushButton" name="pushButton_11">
                <property name="text">
                 <string>Center Scene</string>
                </property>
@@ -239,16 +292,16 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="canvasPropertiesHLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item>
-              <widget class="QLabel" name="sceneBackgroundLabel">
+              <widget class="QLabel" name="label_13">
                <property name="text">
                 <string>Scene Background :</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="sceneBackgroundButton">
+              <widget class="QPushButton" name="pushButton_12">
                <property name="text">
                 <string/>
                </property>
@@ -260,13 +313,13 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="selectShapeLayout">
+         <widget class="QGroupBox" name="groupBox_2">
           <property name="title">
            <string>Select Shape</string>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_11">
            <item>
-            <widget class="QLabel" name="ellipseLabel">
+            <widget class="QLabel" name="label_9">
              <property name="styleSheet">
               <string notr="true">image: url(:/images/images/ellipse.png);</string>
              </property>
@@ -276,7 +329,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="qtQuickLabel">
+            <widget class="QLabel" name="label_10">
              <property name="styleSheet">
               <string notr="true">image: url(:/images/images/quick.png);</string>
              </property>
@@ -286,7 +339,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="rectangleLabel">
+            <widget class="QLabel" name="label_11">
              <property name="styleSheet">
               <string notr="true">image: url(:/images/images/rectangle.png);</string>
              </property>
@@ -296,7 +349,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="starLabel">
+            <widget class="QLabel" name="label_12">
              <property name="styleSheet">
               <string notr="true">image: url(:/images/images/star.png);</string>
              </property>
@@ -322,8 +375,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>536</width>
-     <height>17</height>
+     <width>1009</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -404,7 +457,7 @@
   </widget>
   <action name="actionAdd_image">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/open.png</normaloff>:/images/images/open.png</iconset>
    </property>
    <property name="text">
@@ -413,7 +466,7 @@
   </action>
   <action name="actionQuit">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/close.png</normaloff>:/images/images/close.png</iconset>
    </property>
    <property name="text">
@@ -422,7 +475,7 @@
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/save.png</normaloff>:/images/images/save.png</iconset>
    </property>
    <property name="text">
@@ -431,7 +484,7 @@
   </action>
   <action name="actionLoad">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/open.png</normaloff>:/images/images/open.png</iconset>
    </property>
    <property name="text">
@@ -440,7 +493,7 @@
   </action>
   <action name="actionCopy">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/copyIcon.png</normaloff>:/images/images/copyIcon.png</iconset>
    </property>
    <property name="text">
@@ -449,7 +502,7 @@
   </action>
   <action name="actionCut">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/cutIcon.png</normaloff>:/images/images/cutIcon.png</iconset>
    </property>
    <property name="text">
@@ -458,7 +511,7 @@
   </action>
   <action name="actionPaste">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/pasteIcon.png</normaloff>:/images/images/pasteIcon.png</iconset>
    </property>
    <property name="text">
@@ -467,7 +520,7 @@
   </action>
   <action name="actionUndo">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/undoIcon.png</normaloff>:/images/images/undoIcon.png</iconset>
    </property>
    <property name="text">
@@ -476,7 +529,7 @@
   </action>
   <action name="actionRedo">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/redoIcon.png</normaloff>:/images/images/redoIcon.png</iconset>
    </property>
    <property name="text">
@@ -485,7 +538,7 @@
   </action>
   <action name="actionCursor">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/cursor.png</normaloff>:/images/images/cursor.png</iconset>
    </property>
    <property name="text">
@@ -494,7 +547,7 @@
   </action>
   <action name="actionPen">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/pen.png</normaloff>:/images/images/pen.png</iconset>
    </property>
    <property name="text">
@@ -503,7 +556,7 @@
   </action>
   <action name="actionEraser">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/eraser.png</normaloff>:/images/images/eraser.png</iconset>
    </property>
    <property name="text">
@@ -512,7 +565,7 @@
   </action>
   <action name="actionEllipse">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/circle.png</normaloff>:/images/images/circle.png</iconset>
    </property>
    <property name="text">
@@ -521,7 +574,7 @@
   </action>
   <action name="actionRectangle">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/rectangle1.png</normaloff>:/images/images/rectangle1.png</iconset>
    </property>
    <property name="text">
@@ -530,7 +583,7 @@
   </action>
   <action name="actionStar">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/star.png</normaloff>:/images/images/star.png</iconset>
    </property>
    <property name="text">
@@ -544,7 +597,7 @@
   </action>
   <action name="actionAbout_this_app">
    <property name="icon">
-    <iconset resource="resources.qrc">
+    <iconset>
      <normaloff>:/images/images/about.png</normaloff>:/images/images/about.png</iconset>
    </property>
    <property name="text">
@@ -552,8 +605,6 @@
    </property>
   </action>
  </widget>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
