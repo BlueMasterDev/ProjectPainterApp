@@ -1,66 +1,30 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include <QColorDialog>
-#include <QMouseEvent>
 #include <QPen>
 #include <QMessageBox>
 #include <QClipboard>
 #include "graphics_save_load.h"
 #include <QFileDialog>
 
-CustomGraphicsView::CustomGraphicsView(QWidget *parent)
-    : QGraphicsView(parent), drawing(false), penColor(Qt::black), penWidth(5)
-{
-}
-
-void CustomGraphicsView::setPenColor(const QColor &color)
-{
-    penColor = color;
-}
-
-void CustomGraphicsView::setPenWidth(int width)
-{
-    penWidth = width;
-}
-
-void CustomGraphicsView::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton) {
-        drawing = true;
-        lastPoint = mapToScene(event->pos());
-    }
-}
-
-void CustomGraphicsView::mouseMoveEvent(QMouseEvent *event)
-{
-    if ((event->buttons() & Qt::LeftButton) && drawing) {
-        QPointF currentPoint = mapToScene(event->pos());
-        QPen pen(penColor, penWidth);
-        scene()->addLine(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y(), pen);
-        lastPoint = currentPoint;
-    }
-}
-
-void CustomGraphicsView::mouseReleaseEvent(QMouseEvent *event)
-{
-    if (event->button() == Qt::LeftButton && drawing) {
-        drawing = false;
-    }
-}
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , selectedColor(Qt::yellow)
+    , selectedColor(Qt::black)
+    // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
 
+    customView = new CustomGraphicsView(selectedColor,ui->penWidthSpinBox->value(), ui->penStyleComboBox->currentIndex(), this);
     scene = new QGraphicsScene(this);
 
     customView->setScene(scene);
+
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
-    ui->graphicsView = customView;
+    ui->graphicsView = nullptr;
 
     graphics_Save_Load = new Graphics_Save_Load(ui->graphicsView);
 
@@ -73,6 +37,9 @@ MainWindow::~MainWindow()
     delete graphics_Save_Load;
 }
 
+// -----------------------------------------------------------------------------------------------------------------
+// Pen Properties
+
 void MainWindow::onColorButtonClicked()
 {
     QColor color = QColorDialog::getColor(selectedColor, this, "Choose Color");
@@ -80,14 +47,67 @@ void MainWindow::onColorButtonClicked()
     if (color.isValid()) {
         selectedColor = color;
         ui->penColorButton->setStyleSheet(QString("background-color: %1").arg(color.name()));
-        dynamic_cast<CustomGraphicsView*>(ui->graphicsView)->setPenColor(color);
+        customView->setPenColor(color);
     }
 }
 
-void MainWindow::on_actionQuit_triggered()
+
+void MainWindow::on_penWidthSpinBox_valueChanged(int arg1)
 {
-    QApplication::quit();
+    customView->setPenWidth(arg1);
 }
+
+void MainWindow::on_penWidthSpinBox_textChanged(const QString &arg1)
+{
+    customView->setPenWidth(arg1.toInt());
+}
+
+void MainWindow::on_colorButton_1_clicked()
+{
+    customView->setPenColor(QColor(85, 0, 127));
+}
+
+void MainWindow::on_colorButton_2_clicked()
+{
+    customView->setPenColor(QColor(50, 14, 127));
+}
+
+void MainWindow::on_colorButton_3_clicked()
+{
+    customView->setPenColor(QColor(0, 0, 255));
+}
+
+void MainWindow::on_colorButton_4_clicked()
+{
+    customView->setPenColor(QColor(0, 255, 0));
+}
+
+void MainWindow::on_colorButton_5_clicked()
+{
+    customView->setPenColor(QColor(255, 255, 0));
+}
+
+void MainWindow::on_colorButton_6_clicked()
+{
+    customView->setPenColor(QColor(255, 85, 0));
+}
+
+void MainWindow::on_colorButton_7_clicked()
+{
+    customView->setPenColor(QColor(255, 0, 0));
+}
+
+void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
+{
+    customView->setPenStyle(index);
+}
+
+// -----------------------------------------------------------------------------------------------------------------
+
+// void MainWindow::onColorButton_2Clicked()
+// {
+//     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
+
 
 void MainWindow::on_actionSave_triggered()
 {
@@ -118,12 +138,18 @@ void MainWindow::on_actionAbout_this_app_triggered()
     QMessageBox::about(this, "Message", "Membre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
 }
 
+void MainWindow::on_actionQuit_triggered()
+{
+    QApplication::quit();
+}
+
 void MainWindow::on_actionUndo_triggered()
 {
     QGraphicsItem *item = undoStack.pop();
     scene->removeItem(item);
     delete item;
 }
+
 // void MainWindow::on_actionRedo_triggered()
 // {
 //     scene->addItem();
