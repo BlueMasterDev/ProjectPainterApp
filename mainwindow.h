@@ -43,7 +43,10 @@ public:
 
 private slots:
     void onColorButtonClicked();
-    void changeIcon();
+    //void changeIcon();
+    void onActionTriggered();
+    void updateCursor(const QCursor& cursor); // Slot pour mettre à jour le curseur
+
     // void onColorButton_2Clicked();
 
 private:
@@ -52,6 +55,8 @@ private:
     QColor selectedColor;
     ActionHandler *actionHandler;
     // QColor selectedColor_2;
+
+    void setupActions();
 };
 
 #endif // MAINWINDOW_H

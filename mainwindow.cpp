@@ -63,13 +63,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
 
-    connect(ui->actionEraser, &QAction::triggered, this, &MainWindow::changeIcon);
+    //les actions et les icônes
+    setupActions();
 
-    // Liste des actions
-    QList<QAction*> actions = { ui->actionEraser, ui->actionCursor, ui->actionPen, ui->actionEllipse, ui->actionStar, ui->actionRectangle };
+    //maj curseur lié aux actions
+    connect(actionHandler, &ActionHandler::cursorChanged, this, &MainWindow::updateCursor);
 
-    // Configurer les icônes pour les actions dans ActionHandler
-    actionHandler->configureActions(actions);
 
     // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
 }
@@ -90,9 +89,23 @@ void MainWindow::onColorButtonClicked()
     }
 }
 
-void MainWindow::changeIcon()
-{
-    ui->actionEraser->setIcon(QIcon(":/images/images/eraser_active.png"));
+void MainWindow::setupActions() {
+    // Liste des actions
+    QList<QAction*> actions = { ui->actionEraser, ui->actionCursor, ui->actionPen, ui->actionEllipse, ui->actionStar, ui->actionRectangle };
+    actionHandler->configureActions(actions);
+}
+
+void MainWindow::onActionTriggered() {
+    QAction *action = qobject_cast<QAction*>(sender());
+    if (action) {
+        // Met à jour l'icône et le curseur dans ActionHandler
+        actionHandler->onActionTriggered();
+    }
+}
+
+void MainWindow::updateCursor(const QCursor& cursor) {
+    // Mettre à jour le curseur de la vue graphique
+    ui->graphicsView->setCursor(cursor);
 }
 
 // void MainWindow::onColorButton_2Clicked()
