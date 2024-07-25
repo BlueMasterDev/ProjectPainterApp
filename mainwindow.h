@@ -25,6 +25,10 @@ private slots:
     void onColorButtonClicked();
     // void onColorButton_2Clicked();
 
+    void on_penWidthSpinBox_valueChanged(int arg1);
+
+    void on_penWidthSpinBox_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     CustomGraphicsView *customView;

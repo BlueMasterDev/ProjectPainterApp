@@ -50,3 +50,16 @@ void MainWindow::onColorButtonClicked()
 //         dynamic_cast<CustomGraphicsView*>(ui->graphicsView)->setPenColor(color);
 //     }
 // }
+
+void MainWindow::on_penWidthSpinBox_valueChanged(int arg1)
+{
+    //CustomGraphicsView* customView = dynamic_cast<CustomGraphicsView*>(ui->graphicsView);
+    customView->setPenWidth(arg1);
+}
+
+void MainWindow::on_penWidthSpinBox_textChanged(const QString &arg1)
+{
+    //CustomGraphicsView* customView = dynamic_cast<CustomGraphicsView*>(ui->graphicsView);
+    customView->setPenWidth(arg1.toInt());
+}
+
