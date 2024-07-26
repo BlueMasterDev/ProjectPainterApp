@@ -143,7 +143,7 @@ void MainWindow::on_actionAdd_image_triggered()
 
 void MainWindow::on_actionAbout_this_app_triggered()
 {
-    QMessageBox::about(this, "Message", "Membre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
+    QMessageBox::about(this, "Message", "Projet Dessin dans le cadre de la formation POEI module QT C++ \n\nMembre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
 }
 
 void MainWindow::on_actionQuit_triggered()
