@@ -1,0 +1,69 @@
+\doxysection{C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/customgraphicsview.h}
+\hypertarget{customgraphicsview_8h_source}{}\label{customgraphicsview_8h_source}\mbox{\hyperlink{customgraphicsview_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ CUSTOMGRAPHICSVIEW\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ CUSTOMGRAPHICSVIEW\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QGraphicsView>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QStack>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QMouseEvent>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QGraphicsRectItem>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QListWidget>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QGraphicsScene>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QGraphicsEllipseItem>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QGraphicsPolygonItem>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QDragEnterEvent>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QDropEvent>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QMimeData>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <QMouseEvent>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_custom_graphics_view}{CustomGraphicsView}}\ :\ \textcolor{keyword}{public}\ QGraphicsView}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_custom_graphics_view_aad087f8ef1c4ebaa20228e54a0d52031}{CustomGraphicsView}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_custom_graphics_view_aad087f8ef1c4ebaa20228e54a0d52031}{CustomGraphicsView}}(QColor\ defaultPenColor,\ \textcolor{keywordtype}{int}\ defaultPenWidth,\ \textcolor{keywordtype}{int}\ defaultPenStyleIndex,\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_a06c112329f3b4b31d0df5e7e45f3280d}{setPenColor}}(\textcolor{keyword}{const}\ QColor\ \&color);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_aab57b33a5ae6d9831ff78f87101df9e7}{setPenWidth}}(\textcolor{keywordtype}{int}\ width);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_a588acdd2f5e767748ee0f4ec558a4388}{setPenStyle}}(\textcolor{keywordtype}{int}\ styleIndex);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//undo}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_a0daa7213f55ed07df96258730923287f}{undo}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_a1a4731b4cc05769a7ba1ac025810562b}{redo}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{enum}\ DrawShape\ \{\ None,\ Pen,\ Rectangle,\ Ellipse\ \};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_aa2297220baa5e969e0b4d7a9009be843}{setDrawShape}}(DrawShape\ shape);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_a74c2b2cfea6eccac36b31b00ebdd6d57}{mousePressEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_aed2e426dd8e7352b89494102466d01b3}{mouseMoveEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_a8324e3e7c6ec3df1764b9e4f3b804d93}{mouseReleaseEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_a98bd38d690cd2ed1b49db61f0fe950ff}{dragEnterEvent}}(QDragEnterEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_ab6930e0a85a8af9c895badbf8c9a801f}{dragLeaveEvent}}(QDragLeaveEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_a66ee0736bc6cb3fa583bba85c8200f53}{dragMoveEvent}}(QDragMoveEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_custom_graphics_view_aac9d4e31fafe133bdba208ec9d36970b}{dropEvent}}(QDropEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ signals:}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ itemDrop(QString);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ drawing;}
+\DoxyCodeLine{00061\ \ \ \ \ QPointF\ lastPoint;}
+\DoxyCodeLine{00062\ \ \ \ \ QPen\ pen;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//undo\ action}}
+\DoxyCodeLine{00065\ \ \ \ \ QStack<QGraphicsItem*>\ itemStack;}
+\DoxyCodeLine{00066\ \ \ \ \ QStack<QGraphicsItem*>\ redoStack;}
+\DoxyCodeLine{00067\ \ \ \ \ DrawShape\ currentShape;}
+\DoxyCodeLine{00068\ \ \ \ \ QGraphicsItem\ *currentItem;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CUSTOMGRAPHICSVIEW\_H}}
+
+\end{DoxyCode}

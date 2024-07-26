@@ -1,0 +1,303 @@
+\doxysection{Custom\+Graphics\+View Class Reference}
+\hypertarget{class_custom_graphics_view}{}\label{class_custom_graphics_view}\index{CustomGraphicsView@{CustomGraphicsView}}
+
+
+Classe pour la zone de dessin qui est dérivée de la classe QGraphics\+View.  
+
+
+
+
+{\ttfamily \#include $<$customgraphicsview.\+h$>$}
+
+
+
+Inheritance diagram for Custom\+Graphics\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_custom_graphics_view__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Custom\+Graphics\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_custom_graphics_view__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_custom_graphics_view_a93c9a25c15191e19dd71d8eccf802a9c}\label{class_custom_graphics_view_a93c9a25c15191e19dd71d8eccf802a9c} 
+enum {\bfseries Draw\+Shape} \{ {\bfseries None}
+, {\bfseries Pen}
+, {\bfseries Rectangle}
+, {\bfseries Ellipse}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_custom_graphics_view_a3ab81344c25ccb5c2f4e9ca246460cf8}\label{class_custom_graphics_view_a3ab81344c25ccb5c2f4e9ca246460cf8} 
+void {\bfseries item\+Drop} (QString)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_custom_graphics_view_aad087f8ef1c4ebaa20228e54a0d52031}{Custom\+Graphics\+View}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur de base de \doxylink{class_custom_graphics_view}{Custom\+Graphics\+View}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_custom_graphics_view_a7845d36b3b43c55989feaa760e8c3dbe}{Custom\+Graphics\+View}} (QColor default\+Pen\+Color, int default\+Pen\+Width, int default\+Pen\+Style\+Index, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur de \doxylink{class_custom_graphics_view}{Custom\+Graphics\+View} permettant d\textquotesingle{}indiquer les paramètres du crayon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_a06c112329f3b4b31d0df5e7e45f3280d}{set\+Pen\+Color}} (const QColor \&color)
+\begin{DoxyCompactList}\small\item\em Permet de changer la couleur de l\textquotesingle{}objet crayon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_aab57b33a5ae6d9831ff78f87101df9e7}{set\+Pen\+Width}} (int width)
+\begin{DoxyCompactList}\small\item\em Permet de changer la taille de l\textquotesingle{}objet crayon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_a588acdd2f5e767748ee0f4ec558a4388}{set\+Pen\+Style}} (int style\+Index)
+\begin{DoxyCompactList}\small\item\em Permet de changer le style de l\textquotesingle{}objet crayon. \end{DoxyCompactList}\item 
+\Hypertarget{class_custom_graphics_view_a0daa7213f55ed07df96258730923287f}\label{class_custom_graphics_view_a0daa7213f55ed07df96258730923287f} 
+void {\bfseries undo} ()
+\begin{DoxyCompactList}\small\item\em Gestion de l\textquotesingle{}action undo dans la menu\+Bar. \end{DoxyCompactList}\item 
+\Hypertarget{class_custom_graphics_view_a1a4731b4cc05769a7ba1ac025810562b}\label{class_custom_graphics_view_a1a4731b4cc05769a7ba1ac025810562b} 
+void {\bfseries redo} ()
+\begin{DoxyCompactList}\small\item\em Gestion de l\textquotesingle{}action undo dans la menu\+Bar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_aa2297220baa5e969e0b4d7a9009be843}{set\+Draw\+Shape}} (Draw\+Shape shape)
+\begin{DoxyCompactList}\small\item\em Permet de mettre à jour la shape actuelle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_custom_graphics_view_a74c2b2cfea6eccac36b31b00ebdd6d57}{mouse\+Press\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gestion du clic gauche de la souris (pression) pour le dessin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_aed2e426dd8e7352b89494102466d01b3}{mouse\+Move\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gestion du mouvement de la souris pour le dessin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_a8324e3e7c6ec3df1764b9e4f3b804d93}{mouse\+Release\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gestion du clic gauche de la souris (relachement) pour le dessin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_a98bd38d690cd2ed1b49db61f0fe950ff}{drag\+Enter\+Event}} (QDrag\+Enter\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Drag Enter Event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_ab6930e0a85a8af9c895badbf8c9a801f}{drag\+Leave\+Event}} (QDrag\+Leave\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Drag Leave Event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_a66ee0736bc6cb3fa583bba85c8200f53}{drag\+Move\+Event}} (QDrag\+Move\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Drag Move Event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_graphics_view_aac9d4e31fafe133bdba208ec9d36970b}{drop\+Event}} (QDrop\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Drop Event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe pour la zone de dessin qui est dérivée de la classe QGraphics\+View. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_custom_graphics_view_aad087f8ef1c4ebaa20228e54a0d52031}\index{CustomGraphicsView@{CustomGraphicsView}!CustomGraphicsView@{CustomGraphicsView}}
+\index{CustomGraphicsView@{CustomGraphicsView}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{CustomGraphicsView()}{CustomGraphicsView()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_aad087f8ef1c4ebaa20228e54a0d52031} 
+Custom\+Graphics\+View\+::\+Custom\+Graphics\+View (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur de base de \doxylink{class_custom_graphics_view}{Custom\+Graphics\+View}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \+: widget parent \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom_graphics_view_a7845d36b3b43c55989feaa760e8c3dbe}\index{CustomGraphicsView@{CustomGraphicsView}!CustomGraphicsView@{CustomGraphicsView}}
+\index{CustomGraphicsView@{CustomGraphicsView}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{CustomGraphicsView()}{CustomGraphicsView()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_a7845d36b3b43c55989feaa760e8c3dbe} 
+Custom\+Graphics\+View\+::\+Custom\+Graphics\+View (\begin{DoxyParamCaption}\item[{QColor}]{default\+Pen\+Color}{, }\item[{int}]{default\+Pen\+Width}{, }\item[{int}]{default\+Pen\+Style\+Index}{, }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+
+
+Constructeur de \doxylink{class_custom_graphics_view}{Custom\+Graphics\+View} permettant d\textquotesingle{}indiquer les paramètres du crayon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em default\+Pen\+Color} & \+: couleur par défaut du crayon \\
+\hline
+{\em default\+Pen\+Width} & \+: taille par défaut du crayon \\
+\hline
+{\em default\+Pen\+Style\+Index} & \+: entier correspondant au style par défaut du crayon \\
+\hline
+{\em parent} & \+: widget parent \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_custom_graphics_view_a98bd38d690cd2ed1b49db61f0fe950ff}\index{CustomGraphicsView@{CustomGraphicsView}!dragEnterEvent@{dragEnterEvent}}
+\index{dragEnterEvent@{dragEnterEvent}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{dragEnterEvent()}{dragEnterEvent()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_a98bd38d690cd2ed1b49db61f0fe950ff} 
+void Custom\+Graphics\+View\+::drag\+Enter\+Event (\begin{DoxyParamCaption}\item[{QDrag\+Enter\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Drag Enter Event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QDrag\+Enter\+Event} & \texorpdfstring{$\ast$}{*}event -\/ évènement de QDrag\+Enter\+Event \\
+\hline
+\end{DoxyParams}
+L\textquotesingle{}évènement du Drag\+Enter est acceptée et doit être exécutée\Hypertarget{class_custom_graphics_view_ab6930e0a85a8af9c895badbf8c9a801f}\index{CustomGraphicsView@{CustomGraphicsView}!dragLeaveEvent@{dragLeaveEvent}}
+\index{dragLeaveEvent@{dragLeaveEvent}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{dragLeaveEvent()}{dragLeaveEvent()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_ab6930e0a85a8af9c895badbf8c9a801f} 
+void Custom\+Graphics\+View\+::drag\+Leave\+Event (\begin{DoxyParamCaption}\item[{QDrag\+Leave\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Drag Leave Event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QDrag\+Leave\+Event} & \texorpdfstring{$\ast$}{*}event -\/ évènement de la classe QDrag\+Leave\+Event \\
+\hline
+\end{DoxyParams}
+L\textquotesingle{}évènement du Drag\+Leave est acceptée et doit être exécutée\Hypertarget{class_custom_graphics_view_a66ee0736bc6cb3fa583bba85c8200f53}\index{CustomGraphicsView@{CustomGraphicsView}!dragMoveEvent@{dragMoveEvent}}
+\index{dragMoveEvent@{dragMoveEvent}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{dragMoveEvent()}{dragMoveEvent()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_a66ee0736bc6cb3fa583bba85c8200f53} 
+void Custom\+Graphics\+View\+::drag\+Move\+Event (\begin{DoxyParamCaption}\item[{QDrag\+Move\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Drag Move Event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QDrag\+Move\+Event} & \texorpdfstring{$\ast$}{*}event -\/ évènement de la classe QDrag\+Move\+Event \\
+\hline
+\end{DoxyParams}
+L\textquotesingle{}évènement du Drag\+Move est acceptée et doit être exécutée\Hypertarget{class_custom_graphics_view_aac9d4e31fafe133bdba208ec9d36970b}\index{CustomGraphicsView@{CustomGraphicsView}!dropEvent@{dropEvent}}
+\index{dropEvent@{dropEvent}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{dropEvent()}{dropEvent()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_aac9d4e31fafe133bdba208ec9d36970b} 
+void Custom\+Graphics\+View\+::drop\+Event (\begin{DoxyParamCaption}\item[{QDrop\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Drop Event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QDrop\+Event} & \texorpdfstring{$\ast$}{*}event -\/ évènement de la classe QDrop\+Event \\
+\hline
+\end{DoxyParams}
+Utilisation de l\textquotesingle{}item drag et conversion de la position du curseur à la position de la scène
+
+Ajout des différentes formes ou dessins selon le texte contenu dans l\textquotesingle{}item\Hypertarget{class_custom_graphics_view_aed2e426dd8e7352b89494102466d01b3}\index{CustomGraphicsView@{CustomGraphicsView}!mouseMoveEvent@{mouseMoveEvent}}
+\index{mouseMoveEvent@{mouseMoveEvent}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{mouseMoveEvent()}{mouseMoveEvent()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_aed2e426dd8e7352b89494102466d01b3} 
+void Custom\+Graphics\+View\+::mouse\+Move\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gestion du mouvement de la souris pour le dessin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \+: evenement de la souris \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom_graphics_view_a74c2b2cfea6eccac36b31b00ebdd6d57}\index{CustomGraphicsView@{CustomGraphicsView}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_a74c2b2cfea6eccac36b31b00ebdd6d57} 
+void Custom\+Graphics\+View\+::mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gestion du clic gauche de la souris (pression) pour le dessin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \+: evenement de la souris \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom_graphics_view_a8324e3e7c6ec3df1764b9e4f3b804d93}\index{CustomGraphicsView@{CustomGraphicsView}!mouseReleaseEvent@{mouseReleaseEvent}}
+\index{mouseReleaseEvent@{mouseReleaseEvent}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{mouseReleaseEvent()}{mouseReleaseEvent()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_a8324e3e7c6ec3df1764b9e4f3b804d93} 
+void Custom\+Graphics\+View\+::mouse\+Release\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gestion du clic gauche de la souris (relachement) pour le dessin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \+: evenement de la souris \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom_graphics_view_aa2297220baa5e969e0b4d7a9009be843}\index{CustomGraphicsView@{CustomGraphicsView}!setDrawShape@{setDrawShape}}
+\index{setDrawShape@{setDrawShape}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{setDrawShape()}{setDrawShape()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_aa2297220baa5e969e0b4d7a9009be843} 
+void Custom\+Graphics\+View\+::set\+Draw\+Shape (\begin{DoxyParamCaption}\item[{Draw\+Shape}]{shape}{}\end{DoxyParamCaption})}
+
+
+
+Permet de mettre à jour la shape actuelle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & \+: énumeration qui indique la forme du dessin actuel (crayon, rectangle, ellipse) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom_graphics_view_a06c112329f3b4b31d0df5e7e45f3280d}\index{CustomGraphicsView@{CustomGraphicsView}!setPenColor@{setPenColor}}
+\index{setPenColor@{setPenColor}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{setPenColor()}{setPenColor()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_a06c112329f3b4b31d0df5e7e45f3280d} 
+void Custom\+Graphics\+View\+::set\+Pen\+Color (\begin{DoxyParamCaption}\item[{const QColor \&}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Permet de changer la couleur de l\textquotesingle{}objet crayon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \+: nouvelle couleur du crayon \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom_graphics_view_a588acdd2f5e767748ee0f4ec558a4388}\index{CustomGraphicsView@{CustomGraphicsView}!setPenStyle@{setPenStyle}}
+\index{setPenStyle@{setPenStyle}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{setPenStyle()}{setPenStyle()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_a588acdd2f5e767748ee0f4ec558a4388} 
+void Custom\+Graphics\+View\+::set\+Pen\+Style (\begin{DoxyParamCaption}\item[{int}]{style\+Index}{}\end{DoxyParamCaption})}
+
+
+
+Permet de changer le style de l\textquotesingle{}objet crayon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em style\+Index} & \+: entier correspondant à une valeur de l\textquotesingle{}enumération Pen\+Style qui contient les styles possibles \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_custom_graphics_view_aab57b33a5ae6d9831ff78f87101df9e7}\index{CustomGraphicsView@{CustomGraphicsView}!setPenWidth@{setPenWidth}}
+\index{setPenWidth@{setPenWidth}!CustomGraphicsView@{CustomGraphicsView}}
+\doxysubsubsection{\texorpdfstring{setPenWidth()}{setPenWidth()}}
+{\footnotesize\ttfamily \label{class_custom_graphics_view_aab57b33a5ae6d9831ff78f87101df9e7} 
+void Custom\+Graphics\+View\+::set\+Pen\+Width (\begin{DoxyParamCaption}\item[{int}]{width}{}\end{DoxyParamCaption})}
+
+
+
+Permet de changer la taille de l\textquotesingle{}objet crayon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & \+: nouvelle taille du crayon \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/\mbox{\hyperlink{customgraphicsview_8h}{customgraphicsview.\+h}}\item 
+C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/\mbox{\hyperlink{customgraphicsview_8cpp}{customgraphicsview.\+cpp}}\end{DoxyCompactItemize}
