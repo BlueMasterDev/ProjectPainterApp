@@ -179,6 +179,9 @@ void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
 // -----------------------------------------------------------------------------------------------------------------
 // Canvas Properties
 
+/**
+ * @brief Action qui se déclenche lorque l'on coche ou décoche la case d'affichage de la grille
+ */
 void MainWindow::on_showGridCheckBox_stateChanged(int arg1)
 {
     if(arg1 == Qt::Checked)
@@ -192,11 +195,17 @@ void MainWindow::on_showGridCheckBox_stateChanged(int arg1)
     }
 }
 
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton pour centrer la scene
+ */
 void MainWindow::on_centerSceneButton_clicked()
 {
     customView->centerOn(scene->sceneRect().center());
 }
 
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur la zone de couleur du canvas, permet à l'utilisateur de choisir une couleur.
+ */
 void MainWindow::on_sceneBackgroundButton_clicked()
 {
     QColor color = QColorDialog::getColor(backgroundColor, this, "Choose Color");
@@ -208,6 +217,9 @@ void MainWindow::on_sceneBackgroundButton_clicked()
     }
 }
 
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton pour réinitialiser le dessin, une popup permet de valider ou annuler l'action.
+ */
 void MainWindow::on_eraseDrawingButton_clicked()
 {
     auto reply = QMessageBox::warning(this, "Warning", "Do you really want to erase the entire drawing?", QMessageBox::Yes, QMessageBox::Cancel);
@@ -284,7 +296,11 @@ void MainWindow::updateCursor(const QCursor& cursor) {
 // void MainWindow::onColorButton_2Clicked()
 // {
 //     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
+// -----------------------------------------------------------------------
 
+/**
+ * @brief Réglages de la scene : configuration de la grille et des axes.
+ */
 void MainWindow::setDefaultScene()
 {
     const int sceneWidth = scene->sceneRect().width();
