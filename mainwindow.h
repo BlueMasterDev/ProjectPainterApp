@@ -50,6 +50,7 @@ private slots:
     void on_showGridCheckBox_stateChanged(int arg1);
     void on_centerSceneButton_clicked();
     void on_sceneBackgroundButton_clicked();
+    void on_eraseDrawingButton_clicked();
 
     // Files Properties
     void on_actionQuit_triggered();

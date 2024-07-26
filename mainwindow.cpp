@@ -208,6 +208,20 @@ void MainWindow::on_sceneBackgroundButton_clicked()
     }
 }
 
+void MainWindow::on_eraseDrawingButton_clicked()
+{
+    auto reply = QMessageBox::warning(this, "Warning", "Do you really want to erase the entire drawing?", QMessageBox::Yes, QMessageBox::Cancel);
+    if (reply == QMessageBox::Yes)
+    {
+        scene->clear();
+        setDefaultScene();
+        if(!ui->showGridCheckBox->isChecked())
+        {
+            lineGrid->hide();
+        }
+    }
+}
+
 // -----------------------------------------------------------------------------------------------------------------
 // File Properties - About
 

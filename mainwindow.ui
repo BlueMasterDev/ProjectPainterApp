@@ -369,6 +369,13 @@
              </item>
             </layout>
            </item>
+           <item>
+            <widget class="QPushButton" name="eraseDrawingButton">
+             <property name="text">
+              <string>Erase all drawing</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
