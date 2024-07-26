@@ -334,6 +334,9 @@
                <property name="text">
                 <string>Show Grid</string>
                </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -356,12 +359,22 @@
              </item>
              <item>
               <widget class="QPushButton" name="sceneBackgroundButton">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
             </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="eraseDrawingButton">
+             <property name="text">
+              <string>Erase all drawing</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>

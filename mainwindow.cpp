@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include <QClipboard>
 #include <QFileDialog>
+#include <QGraphicsLineItem>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
@@ -25,13 +26,24 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , actionHandler(new ActionHandler(this))
     , selectedColor(Qt::black)
+    , backgroundColor(Qt::white)
+    // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
 
     customView = new CustomGraphicsView(selectedColor,ui->penWidthSpinBox->value(), ui->penStyleComboBox->currentIndex(), this);
-    scene = new QGraphicsScene(this);
 
+    // création de la scene et définition de sa taille à partir d'un rectangle
+    scene = new QGraphicsScene(this);
+    const int sceneMaxSize = 1000;
+    scene->setSceneRect(0, 0, sceneMaxSize, sceneMaxSize);
+
+    // ajout de la scene à la graphicsview et centrage par défaut sur le centre de la scene
     customView->setScene(scene);
+    customView->centerOn(QPointF(sceneMaxSize/2, sceneMaxSize/2));
+
+    // création de la grille
+    setDefaultScene();
 
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
@@ -203,6 +215,64 @@ void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
 }
 
 // -----------------------------------------------------------------------------------------------------------------
+// Canvas Properties
+
+/**
+ * @brief Action qui se déclenche lorque l'on coche ou décoche la case d'affichage de la grille
+ */
+void MainWindow::on_showGridCheckBox_stateChanged(int arg1)
+{
+    if(arg1 == Qt::Checked)
+    {
+        lineGrid->show();
+
+    }
+    else // Qt::Unchecked
+    {
+        lineGrid->hide();
+    }
+}
+
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton pour centrer la scene
+ */
+void MainWindow::on_centerSceneButton_clicked()
+{
+    customView->centerOn(scene->sceneRect().center());
+}
+
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur la zone de couleur du canvas, permet à l'utilisateur de choisir une couleur.
+ */
+void MainWindow::on_sceneBackgroundButton_clicked()
+{
+    QColor color = QColorDialog::getColor(backgroundColor, this, "Choose Color");
+
+    if (color.isValid()) {
+        backgroundColor = color;
+        ui->sceneBackgroundButton->setStyleSheet(QString("background-color: %1").arg(color.name()));
+        customView->setBackgroundBrush(QBrush(color));
+    }
+}
+
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton pour réinitialiser le dessin, une popup permet de valider ou annuler l'action.
+ */
+void MainWindow::on_eraseDrawingButton_clicked()
+{
+    auto reply = QMessageBox::warning(this, "Warning", "Do you really want to erase the entire drawing?", QMessageBox::Yes, QMessageBox::Cancel);
+    if (reply == QMessageBox::Yes)
+    {
+        scene->clear();
+        setDefaultScene();
+        if(!ui->showGridCheckBox->isChecked())
+        {
+            lineGrid->hide();
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------------------
 // File Properties - About
 
 void MainWindow::on_actionSave_triggered()
@@ -273,3 +343,49 @@ void MainWindow::updateCursor(const QCursor& cursor) {
     customView->setCursor(cursor);
 }
 
+// -----------------------------------------------------------------------
+// void MainWindow::onColorButton_2Clicked()
+// {
+//     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
+// -----------------------------------------------------------------------
+
+/**
+ * @brief Réglages de la scene : configuration de la grille et des axes.
+ */
+void MainWindow::setDefaultScene()
+{
+    const int sceneWidth = scene->sceneRect().width();
+    const int sceneHeight = scene->sceneRect().height();
+
+    QPen gridPen(QColor(235,235, 235));
+    gridPen.setWidth(2);
+    QList<QGraphicsItem *> gridList;
+
+    for (int x = 0; x <= sceneWidth; x += 50)
+    {
+        QGraphicsLineItem* line = new QGraphicsLineItem(x, 0, x, sceneWidth);
+        line->setPen(gridPen);
+        gridList.push_back(line);
+    }
+
+    for (int y = 0; y <= sceneHeight; y += 50)
+    {
+        QGraphicsLineItem* line = new QGraphicsLineItem(0, y, sceneHeight, y);
+        line->setPen(gridPen);
+        gridList.push_back(line);
+    }
+
+    lineGrid = scene->createItemGroup(gridList);
+
+    QPen axisPen(QColor(255, 0, 0));
+    axisPen.setWidth(2);
+
+    const int axisSize = 300;
+
+    QGraphicsLineItem* xAxis = new QGraphicsLineItem(sceneWidth/2 - axisSize, sceneHeight/2, sceneWidth/2 + axisSize, sceneHeight/2);
+    xAxis->setPen(axisPen);
+    scene->addItem(xAxis);
+    QGraphicsLineItem* yAxis = new QGraphicsLineItem(sceneWidth/2, sceneHeight/2 - axisSize, sceneWidth/2, sceneHeight/2 + axisSize);
+    yAxis->setPen(axisPen);
+    scene->addItem(yAxis);
+}

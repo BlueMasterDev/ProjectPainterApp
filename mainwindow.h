@@ -11,6 +11,7 @@
 #include <QGraphicsScene>
 #include <QColor>
 #include <QAction>
+
 #include <actionhandler.h>
 #include "graphics_save_load.h"
 #include "customgraphicsview.h"
@@ -44,8 +45,6 @@ public:
 private slots:
     // Pen Properties
     void onColorButtonClicked();
-
-    // void onColorButton_2Clicked();
     void on_penWidthSpinBox_valueChanged(int arg1);
     void on_penWidthSpinBox_textChanged(const QString &arg1);
     void on_colorButton_1_clicked();
@@ -56,6 +55,12 @@ private slots:
     void on_colorButton_6_clicked();
     void on_colorButton_7_clicked();
     void on_penStyleComboBox_currentIndexChanged(int index);
+
+    // Canvas Properties
+    void on_showGridCheckBox_stateChanged(int arg1);
+    void on_centerSceneButton_clicked();
+    void on_sceneBackgroundButton_clicked();
+    void on_eraseDrawingButton_clicked();
 
     // Files Properties
     void on_actionQuit_triggered();
@@ -68,19 +73,24 @@ private slots:
     void onActionTriggered();
     void updateCursor(const QCursor& cursor); // Slot pour mettre à jour le curseur
 
+    // void onColorButton_2Clicked();
+
 private:
     Ui::MainWindow *ui;
     CustomGraphicsView *customView;
     QGraphicsScene *scene;
     QColor selectedColor;
+    QColor backgroundColor;
+    QGraphicsItemGroup* lineGrid;
     ActionHandler *actionHandler;
     // QColor selectedColor_2;
-    void setupActions();
-
     Graphics_Save_Load *graphics_Save_Load;
     QListWidget *listWidget;
 
+	void setupActions();
     QPointF mapToScene(QPoint);
+	
+	void setDefaultScene();
 };
 
 #endif // MAINWINDOW_H
