@@ -1,8 +1,17 @@
+/**
+ * @file customgraphicsview.h
+ * @brief Fichier pour la classe CustomGraphicsView
+ */
+
 #ifndef CUSTOMGRAPHICSVIEW_H
 #define CUSTOMGRAPHICSVIEW_H
 
 #include <QGraphicsView>
 
+/**
+ * @class CustomGraphicsView
+ * @brief Classe pour la zone de dessin qui est dérivée de la classe QGraphicsView
+ */
 class CustomGraphicsView : public QGraphicsView
 {
     Q_OBJECT
