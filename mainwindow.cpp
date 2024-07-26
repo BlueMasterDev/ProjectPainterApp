@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include <QClipboard>
 #include <QFileDialog>
+#include <QGraphicsLineItem>
 
 
 /**
@@ -38,6 +39,25 @@ MainWindow::MainWindow(QWidget *parent)
     // ajout de la scene à la graphicsview et centrage par défaut sur le centre de la scene
     customView->setScene(scene);
     customView->centerOn(QPointF(sceneMaxSize/2, sceneMaxSize/2));
+
+    // création de la grille
+    QPen gridPen(QColor(235,235, 235));
+    gridPen.setWidth(2);
+    QList<QGraphicsItem *> gridList;
+    for (int x = 0; x <= sceneMaxSize; x += 50)
+    {
+        QGraphicsLineItem* line = new QGraphicsLineItem(x, 0, x, sceneMaxSize);
+        line->setPen(gridPen);
+        gridList.push_back(line);
+    }
+    for (int y = 0; y <= sceneMaxSize; y += 50)
+    {
+        QGraphicsLineItem* line = new QGraphicsLineItem(0, y, sceneMaxSize, y);
+        line->setPen(gridPen);
+        gridList.push_back(line);
+    }
+    lineGrid = scene->createItemGroup(gridList);
+    lineGrid->hide();
 
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
@@ -174,6 +194,19 @@ void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
 
 // -----------------------------------------------------------------------------------------------------------------
 // Canvas Properties
+
+void MainWindow::on_showGridCheckBox_stateChanged(int arg1)
+{
+    if(arg1 == Qt::Checked)
+    {
+        lineGrid->show();
+
+    }
+    else // Qt::Unchecked
+    {
+        lineGrid->hide();
+    }
+}
 
 void MainWindow::on_centerSceneButton_clicked()
 {

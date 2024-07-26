@@ -11,6 +11,7 @@
 #include <QGraphicsScene>
 #include <QColor>
 #include <QAction>
+
 #include <actionhandler.h>
 #include "graphics_save_load.h"
 #include "customgraphicsview.h"
@@ -46,7 +47,9 @@ private slots:
     void on_penStyleComboBox_currentIndexChanged(int index);
 
     // Canvas Properties
+    void on_showGridCheckBox_stateChanged(int arg1);
     void on_centerSceneButton_clicked();
+    void on_sceneBackgroundButton_clicked();
 
     // Files Properties
     void on_actionQuit_triggered();
@@ -61,14 +64,13 @@ private slots:
 
     // void onColorButton_2Clicked();
 
-    void on_sceneBackgroundButton_clicked();
-
 private:
     Ui::MainWindow *ui;
     CustomGraphicsView *customView;
     QGraphicsScene *scene;
     QColor selectedColor;
     QColor backgroundColor;
+    QGraphicsItemGroup* lineGrid;
     ActionHandler *actionHandler;
     // QColor selectedColor_2;
 
