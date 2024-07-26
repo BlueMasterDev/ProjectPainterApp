@@ -28,9 +28,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     customView = new CustomGraphicsView(selectedColor,ui->penWidthSpinBox->value(), ui->penStyleComboBox->currentIndex(), this);
-    scene = new QGraphicsScene(this);
 
+    // création de la scene et définition de sa taille à partir d'un rectangle
+    scene = new QGraphicsScene(this);
+    const int sceneMaxSize = 1000;
+    scene->setSceneRect(0, 0, sceneMaxSize, sceneMaxSize);
+
+    // ajout de la scene à la graphicsview et centrage par défaut sur le centre de la scene
     customView->setScene(scene);
+    customView->centerOn(QPointF(sceneMaxSize/2, sceneMaxSize/2));
 
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
