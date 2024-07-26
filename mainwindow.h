@@ -77,6 +77,7 @@ private:
     void setupActions();
     Graphics_Save_Load *graphics_Save_Load;
 
+    void setDefaultScene();
 };
 
 #endif // MAINWINDOW_H
