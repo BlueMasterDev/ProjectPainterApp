@@ -309,4 +309,16 @@ void MainWindow::setDefaultScene()
     }
 
     lineGrid = scene->createItemGroup(gridList);
+
+    QPen axisPen(QColor(255, 0, 0));
+    axisPen.setWidth(2);
+
+    const int axisSize = 300;
+
+    QGraphicsLineItem* xAxis = new QGraphicsLineItem(sceneWidth/2 - axisSize, sceneHeight/2, sceneWidth/2 + axisSize, sceneHeight/2);
+    xAxis->setPen(axisPen);
+    scene->addItem(xAxis);
+    QGraphicsLineItem* yAxis = new QGraphicsLineItem(sceneWidth/2, sceneHeight/2 - axisSize, sceneWidth/2, sceneHeight/2 + axisSize);
+    yAxis->setPen(axisPen);
+    scene->addItem(yAxis);
 }
