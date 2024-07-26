@@ -1,12 +1,24 @@
+/**
+ * @file actionhandler.cpp
+ * @brief Fichier pour la classe ActionHandler
+ */
+
 #include "ActionHandler.h"
 #include <QIcon>
 #include <QPixmap>
 
+
+/**
+ * @brief Constructeur de base de la classe ActionHandler
+ * @param parent : object parent
+ */
 ActionHandler::ActionHandler(QObject *parent)
     : QObject(parent), currentAction(nullptr) {}
 
+
 /**
  * @brief Mise à jour des chemins des images à récupérer quand l'icone ou le curseur change
+ * @param actions : liste des actions de la barre de menu
  */
 void ActionHandler::configureActions(const QList<QAction*>& actions) {
     for (QAction *action : actions) {
@@ -55,6 +67,7 @@ void ActionHandler::onActionTriggered() {
 
 /**
  * @brief Sélectionne la nouvelle action et déselectionne la précédente
+ * @param newAction : la nouvelle action qui sera sélectionnée dans la barre de menu
  */
 void ActionHandler::updateIcon(QAction *newAction) {
     if (currentAction && currentAction != newAction) {
@@ -68,6 +81,7 @@ void ActionHandler::updateIcon(QAction *newAction) {
 
 /**
  * @brief Signal de changement de curseur
+ * @param newAction : le nouveau curseur qui sera sélectionné en fonction d'une action
  */
 void ActionHandler::updateCursor(QAction *newAction) {
     if (cursors.contains(newAction)) {

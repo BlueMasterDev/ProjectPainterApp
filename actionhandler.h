@@ -1,3 +1,8 @@
+/**
+ * @file actionhandler.h
+ * @brief Fichier pour la classe ActionHandler
+ */
+
 #ifndef ACTIONHANDLER_H
 #define ACTIONHANDLER_H
 
