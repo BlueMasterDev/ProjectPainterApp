@@ -81,6 +81,7 @@ void MainWindow::on_penWidthSpinBox_textChanged(const QString &arg1)
 void MainWindow::on_colorButton_1_clicked()
 {
     customView->setPenColor(QColor(85, 0, 127));
+    ui->penColorButton->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(85).arg(0).arg(127));
 }
 
 /**
@@ -89,6 +90,7 @@ void MainWindow::on_colorButton_1_clicked()
 void MainWindow::on_colorButton_2_clicked()
 {
     customView->setPenColor(QColor(50, 14, 127));
+    ui->penColorButton->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(50).arg(14).arg(127));
 }
 
 /**
@@ -97,6 +99,7 @@ void MainWindow::on_colorButton_2_clicked()
 void MainWindow::on_colorButton_3_clicked()
 {
     customView->setPenColor(QColor(0, 0, 255));
+    ui->penColorButton->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(0).arg(0).arg(255));
 }
 
 /**
@@ -105,6 +108,7 @@ void MainWindow::on_colorButton_3_clicked()
 void MainWindow::on_colorButton_4_clicked()
 {
     customView->setPenColor(QColor(0, 255, 0));
+    ui->penColorButton->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(0).arg(255).arg(0));
 }
 
 /**
@@ -113,6 +117,7 @@ void MainWindow::on_colorButton_4_clicked()
 void MainWindow::on_colorButton_5_clicked()
 {
     customView->setPenColor(QColor(255, 255, 0));
+    ui->penColorButton->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(255).arg(255).arg(0));
 }
 
 /**
@@ -121,6 +126,7 @@ void MainWindow::on_colorButton_5_clicked()
 void MainWindow::on_colorButton_6_clicked()
 {
     customView->setPenColor(QColor(255, 85, 0));
+    ui->penColorButton->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(255).arg(85).arg(0));
 }
 
 /**
@@ -129,6 +135,7 @@ void MainWindow::on_colorButton_6_clicked()
 void MainWindow::on_colorButton_7_clicked()
 {
     customView->setPenColor(QColor(255, 0, 0));
+    ui->penColorButton->setStyleSheet(QString("background-color: rgb(%1, %2, %3);").arg(255).arg(0).arg(0));
 }
 
 /**
