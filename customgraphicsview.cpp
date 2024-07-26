@@ -4,7 +4,7 @@
  */
 
 #include "customgraphicsview.h"
-
+#include <QGraphicsLineItem>
 #include <QMouseEvent>
 
 /**
@@ -80,9 +80,19 @@ void CustomGraphicsView::mousePressEvent(QMouseEvent *event)
  */
 void CustomGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
+    // if ((event->buttons() & Qt::LeftButton) && drawing) {
+    //     QPointF currentPoint = mapToScene(event->pos());
+    //     scene()->addLine(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y(), pen);
+    //     lastPoint = currentPoint;
+    // }
     if ((event->buttons() & Qt::LeftButton) && drawing) {
         QPointF currentPoint = mapToScene(event->pos());
-        scene()->addLine(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y(), pen);
+        QGraphicsLineItem* line = new QGraphicsLineItem(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y());
+        line->setPen(pen);
+
+        scene()->addItem(line);
+        itemStack.push(line);
+
         lastPoint = currentPoint;
     }
 }
@@ -95,5 +105,31 @@ void CustomGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton && drawing) {
         drawing = false;
+    }
+}
+
+/**
+ * @brief Gestion de l'action undo dans la menuBar
+ * @param event : evenement d'action
+ */
+void CustomGraphicsView::undo()
+{
+    if (!itemStack.isEmpty()) {
+        QGraphicsItem* item = itemStack.pop();
+        redoStack.push(item);
+        scene()->removeItem(item);
+    }
+}
+
+/**
+ * @brief Gestion de l'action undo dans la menuBar
+ * @param event : evenement d'action
+ */
+void CustomGraphicsView::redo()
+{
+    if (!redoStack.isEmpty()) {
+        QGraphicsItem* item = redoStack.pop();
+        scene()->addItem(item);
+        itemStack.push(item);
     }
 }

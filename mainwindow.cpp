@@ -40,13 +40,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
 
-
-    //les actions et les icônes
     setupActions();
-
-    //maj curseur lié aux actions
     connect(actionHandler, &ActionHandler::cursorChanged, this, &MainWindow::updateCursor);
-
+    connect(ui->actionUndo, &QAction::triggered, customView, &CustomGraphicsView::undo);
+    connect(ui->actionRedo, &QAction::triggered, customView, &CustomGraphicsView::redo);
 
     // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
 
@@ -203,23 +200,32 @@ void MainWindow::on_actionQuit_triggered()
 }
 
 // -----------------------------------------------------------------------------------------------------------------
+// Actions on menuBar
 
+
+/**
+ * @brief Configure les actions de la menuBar
+ */
 void MainWindow::setupActions() {
-    // Liste des actions
-    QList<QAction*> actions = { ui->actionEraser, ui->actionCursor, ui->actionPen, ui->actionEllipse, ui->actionStar, ui->actionRectangle };
+    QList<QAction*> actions = { ui->actionEraser, ui->actionCursor, ui->actionPen, ui->actionEllipse, ui->actionStar, ui->actionRectangle};
     actionHandler->configureActions(actions);
+
 }
 
+/**
+ * @brief Met à jour l'icône dans ActionHandler
+ */
 void MainWindow::onActionTriggered() {
     QAction *action = qobject_cast<QAction*>(sender());
     if (action) {
-        // Met à jour l'icône et le curseur dans ActionHandler
         actionHandler->onActionTriggered();
     }
 }
 
+/**
+ * @brief Met à jour le curseur dans ActionHandler
+ */
 void MainWindow::updateCursor(const QCursor& cursor) {
-    // Mettre à jour le curseur de la vue graphique
     customView->setCursor(cursor);
 }
 

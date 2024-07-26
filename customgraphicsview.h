@@ -7,6 +7,7 @@
 #define CUSTOMGRAPHICSVIEW_H
 
 #include <QGraphicsView>
+#include <QStack>
 
 /**
  * @class CustomGraphicsView
@@ -23,6 +24,9 @@ public:
     void setPenColor(const QColor &color);
     void setPenWidth(int width);
     void setPenStyle(int styleIndex);
+    //undo
+    void undo();
+    void redo();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -33,6 +37,9 @@ private:
     bool drawing;
     QPointF lastPoint;
     QPen pen;
+    //undo action
+    QStack<QGraphicsItem*> itemStack; // Pile pour stocker les éléments dessinés
+    QStack<QGraphicsItem*> redoStack;
 };
 
 #endif // CUSTOMGRAPHICSVIEW_H
