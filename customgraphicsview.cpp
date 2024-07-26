@@ -62,6 +62,10 @@ void CustomGraphicsView::setPenStyle(int styleIndex)
     pen.setStyle(static_cast<Qt::PenStyle>(styleIndex + 1)); // in Qt::PenStyle 0 is no pen so we don't use it
 }
 
+/**
+ * @brief Permet de mettre à jour la shape actuelle
+ * @param shape : énumeration qui indique la forme du dessin actuel (crayon, rectangle, ellipse)
+ */
 void CustomGraphicsView::setDrawShape(DrawShape shape)
 {
     currentShape = shape;
@@ -71,7 +75,6 @@ void CustomGraphicsView::setDrawShape(DrawShape shape)
  * @brief Gestion du clic gauche de la souris (pression) pour le dessin
  * @param event : evenement de la souris
  */
-
 void CustomGraphicsView::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
@@ -141,7 +144,6 @@ void CustomGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 
 /**
  * @brief Gestion de l'action undo dans la menuBar
- * @param event : evenement d'action
  */
 void CustomGraphicsView::undo()
 {
@@ -154,7 +156,6 @@ void CustomGraphicsView::undo()
 
 /**
  * @brief Gestion de l'action undo dans la menuBar
- * @param event : evenement d'action
  */
 void CustomGraphicsView::redo()
 {

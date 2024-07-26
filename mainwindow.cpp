@@ -5,7 +5,6 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 #include <QColorDialog>
 #include <QPen>
 #include <QIcon>
@@ -27,24 +26,28 @@ MainWindow::MainWindow(QWidget *parent)
     , actionHandler(new ActionHandler(this))
     , selectedColor(Qt::black)
     , backgroundColor(Qt::white)
-    // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
 
     customView = new CustomGraphicsView(selectedColor,ui->penWidthSpinBox->value(), ui->penStyleComboBox->currentIndex(), this);
 
-    // création de la scene et définition de sa taille à partir d'un rectangle
+    /**
+     * Création de la scene et définition de sa taille à partir d'un rectangle
+     */
     scene = new QGraphicsScene(this);
     const int sceneMaxSize = 1000;
     scene->setSceneRect(0, 0, sceneMaxSize, sceneMaxSize);
 
-    // ajout de la scene à la graphicsview et centrage par défaut sur le centre de la scene
+    /**
+    * Ajout de la scene à la graphicsview et centrage par défaut sur le centre de la scene
+    */
     customView->setScene(scene);
     customView->centerOn(QPointF(sceneMaxSize/2, sceneMaxSize/2));
 
-    // création de la grille
+    /**
+    * Création de la grille
+    */
     setDefaultScene();
-
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
     ui->graphicsView = nullptr;
@@ -56,8 +59,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actionHandler, &ActionHandler::cursorChanged, this, &MainWindow::updateCursor);
     connect(ui->actionUndo, &QAction::triggered, customView, &CustomGraphicsView::undo);
     connect(ui->actionRedo, &QAction::triggered, customView, &CustomGraphicsView::redo);
- 
-    // Initialisation de la ListWidget avec tous les items
+
+    /**
+    * Initialisation de la ListWidget avec tous les items
+    */
+
     setListWidgetItems();
     customView->setAcceptDrops(true);
 }
@@ -74,38 +80,49 @@ MainWindow::~MainWindow()
 void MainWindow::setListWidgetItems()
 {
     listWidget = ui->listWidgetShapeItems;
-
-    // Mise en place des icônes pour les items
+    /**
+    * Mise en place des icônes pour les items
+    */
     QPixmap pixLearn(":/images/images/quick.png");
     QPixmap pixEllipse(":/images/images/circle.png");
     QPixmap pixRect(":/images/images/rectangle.png");
     QPixmap pixStar(":/images/images/star.png");
 
-    // Création des items pour la listwidget
+    /**
+    * Création des items pour la listwidget
+    */
     QListWidgetItem *itemLearn = new QListWidgetItem;
     QListWidgetItem *itemEllipse = new QListWidgetItem;
     QListWidgetItem *itemRect = new QListWidgetItem;
     QListWidgetItem *itemStar = new QListWidgetItem;
 
-    // Application des icônes pour tous les items
+    /**
+    * Application des icônes pour tous les items
+    */
     itemLearn->setIcon(pixLearn);
     itemEllipse->setIcon(pixEllipse);
     itemRect->setIcon(pixRect);
     itemStar->setIcon(pixStar);
 
-    // Application du texte pour tous les items
+    /**
+    * Application du texte pour tous les items
+    */
     itemLearn->setText("Learn");
     itemEllipse->setText("Ellipse");
     itemRect->setText("Rectangle");
     itemStar->setText("Star");
 
-    // Ajout de tous les items dans la listwidget
+    /**
+    * Ajout de tous les items dans la listwidget
+    */
     listWidget->addItem(itemLearn);
     listWidget->addItem(itemEllipse);
     listWidget->addItem(itemRect);
     listWidget->addItem(itemStar);
 
-    // Activation du drag and drop
+    /**
+    * Activation du drag and drop
+    */
     listWidget->setDragEnabled(true);
 }
 
@@ -129,7 +146,6 @@ void MainWindow::onColorButtonClicked()
 /**
  * @brief Action qui se déclenche lorsque l'on incrémente ou décrémente le champs contenant la largeur du crayon.
  */
-
 void MainWindow::on_penWidthSpinBox_valueChanged(int arg1)
 {
     customView->setPenWidth(arg1);
@@ -225,7 +241,6 @@ void MainWindow::on_showGridCheckBox_stateChanged(int arg1)
     if(arg1 == Qt::Checked)
     {
         lineGrid->show();
-
     }
     else // Qt::Unchecked
     {
@@ -275,6 +290,9 @@ void MainWindow::on_eraseDrawingButton_clicked()
 // -----------------------------------------------------------------------------------------------------------------
 // File Properties - About
 
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton sauvegarder
+ */
 void MainWindow::on_actionSave_triggered()
 {
     QString filePath = QFileDialog::getSaveFileName(this, "Save File", "NomImage", "Images (*.png *.jpg)");
@@ -283,6 +301,9 @@ void MainWindow::on_actionSave_triggered()
     }
 }
 
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton charger
+ */
 void MainWindow::on_actionLoad_triggered()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Load File", "", "Images (*.png *.jpg)");
@@ -291,6 +312,9 @@ void MainWindow::on_actionLoad_triggered()
     }
 }
 
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton d'ajout d'image
+ */
 void MainWindow::on_actionAdd_image_triggered()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Add File", "", "Images (*.png *.jpg)");
@@ -299,11 +323,17 @@ void MainWindow::on_actionAdd_image_triggered()
     }
 }
 
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton à propos
+ */
 void MainWindow::on_actionAbout_this_app_triggered()
 {
     QMessageBox::about(this, "Message", "Projet Dessin dans le cadre de la formation POEI module QT C++ \n\nMembre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
 }
 
+/**
+ * @brief Action qui se déclenche lorque l'on clique sur le bouton quitter
+ */
 void MainWindow::on_actionQuit_triggered()
 {
     QApplication::quit();
@@ -311,8 +341,6 @@ void MainWindow::on_actionQuit_triggered()
 
 // -----------------------------------------------------------------------------------------------------------------
 // Actions on menuBar
-// Draw Forms
-
 
 /**
  * @brief Configure les actions de la menuBar
@@ -342,12 +370,6 @@ void MainWindow::onActionTriggered() {
 void MainWindow::updateCursor(const QCursor& cursor) {
     customView->setCursor(cursor);
 }
-
-// -----------------------------------------------------------------------
-// void MainWindow::onColorButton_2Clicked()
-// {
-//     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
-// -----------------------------------------------------------------------
 
 /**
  * @brief Réglages de la scene : configuration de la grille et des axes.
