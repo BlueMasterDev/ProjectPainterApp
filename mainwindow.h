@@ -61,11 +61,14 @@ private slots:
 
     // void onColorButton_2Clicked();
 
+    void on_sceneBackgroundButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     CustomGraphicsView *customView;
     QGraphicsScene *scene;
     QColor selectedColor;
+    QColor backgroundColor;
     ActionHandler *actionHandler;
     // QColor selectedColor_2;
 

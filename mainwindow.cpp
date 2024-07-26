@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , actionHandler(new ActionHandler(this))
     , selectedColor(Qt::black)
+    , backgroundColor(Qt::white)
     // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
@@ -177,6 +178,17 @@ void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
 void MainWindow::on_centerSceneButton_clicked()
 {
     customView->centerOn(scene->sceneRect().center());
+}
+
+void MainWindow::on_sceneBackgroundButton_clicked()
+{
+    QColor color = QColorDialog::getColor(backgroundColor, this, "Choose Color");
+
+    if (color.isValid()) {
+        backgroundColor = color;
+        ui->sceneBackgroundButton->setStyleSheet(QString("background-color: %1").arg(color.name()));
+        customView->setBackgroundBrush(QBrush(color));
+    }
 }
 
 // -----------------------------------------------------------------------------------------------------------------
