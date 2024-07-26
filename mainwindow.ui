@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1009</width>
-    <height>720</height>
+    <height>682</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -334,9 +334,6 @@
                <property name="text">
                 <string>Show Grid</string>
                </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
               </widget>
              </item>
              <item>
@@ -359,22 +356,12 @@
              </item>
              <item>
               <widget class="QPushButton" name="sceneBackgroundButton">
-               <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 255, 255);</string>
-               </property>
                <property name="text">
                 <string/>
                </property>
               </widget>
              </item>
             </layout>
-           </item>
-           <item>
-            <widget class="QPushButton" name="eraseDrawingButton">
-             <property name="text">
-              <string>Erase all drawing</string>
-             </property>
-            </widget>
            </item>
           </layout>
          </widget>
@@ -386,15 +373,42 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_11">
            <item>
-            <widget class="QListWidget" name="listWidgetShapeItems">
-             <property name="dragEnabled">
-              <bool>true</bool>
+            <widget class="QLabel" name="filledEllipseLabel">
+             <property name="styleSheet">
+              <string notr="true">image: url(:/images/images/ellipse.png);</string>
              </property>
-             <property name="dragDropMode">
-              <enum>QAbstractItemView::DragOnly</enum>
+             <property name="text">
+              <string/>
              </property>
-             <property name="defaultDropAction">
-              <enum>Qt::CopyAction</enum>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="qtQuickLabel">
+             <property name="styleSheet">
+              <string notr="true">image: url(:/images/images/quick.png);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="filledRectangleLabel">
+             <property name="styleSheet">
+              <string notr="true">image: url(:/images/images/rectangle.png);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="filledStarLabel">
+             <property name="styleSheet">
+              <string notr="true">image: url(:/images/images/star.png);</string>
+             </property>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
@@ -404,7 +418,7 @@
        </layout>
       </item>
       <item>
-       <widget class="CustomGraphicsView" name="graphicsView"/>
+       <widget class="QGraphicsView" name="graphicsView"/>
       </item>
      </layout>
     </item>
@@ -646,13 +660,6 @@
    </property>
   </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>CustomGraphicsView</class>
-   <extends>QGraphicsView</extends>
-   <header location="global">customgraphicsview.h</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>

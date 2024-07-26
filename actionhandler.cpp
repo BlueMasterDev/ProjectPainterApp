@@ -1,28 +1,13 @@
-/**
- * @file actionhandler.cpp
- * @brief Fichier pour la classe ActionHandler
- */
-
 #include "ActionHandler.h"
 #include <QIcon>
 #include <QPixmap>
 
-
-/**
- * @brief Constructeur de base de la classe ActionHandler
- * @param parent : object parent
- */
 ActionHandler::ActionHandler(QObject *parent)
     : QObject(parent), currentAction(nullptr) {}
 
-
-/**
- * @brief Mise à jour des chemins des images à récupérer quand l'icone ou le curseur change
- * @param actions : liste des actions de la barre de menu
- */
 void ActionHandler::configureActions(const QList<QAction*>& actions) {
     for (QAction *action : actions) {
-        QString actionName = action->text();
+        QString actionName = action->text(); // Utiliser le texte de l'action comme clé pour les chemins
 
         if (actionName == "Eraser") {
             initialIcons[action] = ":/images/images/eraser.png";
@@ -49,14 +34,13 @@ void ActionHandler::configureActions(const QList<QAction*>& actions) {
             activeIcons[action] = ":/images/images/rectangle1_active.png";
             cursors[action] = QCursor(QPixmap(":/images/images/rectangle_cursor.png"));
         }
+
+        //icône initiale
         action->setIcon(QIcon(initialIcons[action]));
         connect(action, &QAction::triggered, this, &ActionHandler::onActionTriggered);
     }
 }
 
-/**
- * @brief Mise à jour de l'icone et du curseur après un clic sur l'action
- */
 void ActionHandler::onActionTriggered() {
     QAction *action = qobject_cast<QAction*>(sender());
     if (action) {
@@ -65,33 +49,26 @@ void ActionHandler::onActionTriggered() {
     }
 }
 
-/**
- * @brief Sélectionne la nouvelle action et déselectionne la précédente
- * @param newAction : la nouvelle action qui sera sélectionnée dans la barre de menu
- */
 void ActionHandler::updateIcon(QAction *newAction) {
+    // Revenir à l'icône initiale pour l'action précédente
     if (currentAction && currentAction != newAction) {
         currentAction->setIcon(QIcon(initialIcons[currentAction]));
     }
+
+    // Mettre à jour l'icône pour la nouvelle action
     if (activeIcons.contains(newAction)) {
         newAction->setIcon(QIcon(activeIcons[newAction]));
         currentAction = newAction;
     }
 }
 
-/**
- * @brief Signal de changement de curseur
- * @param newAction : le nouveau curseur qui sera sélectionné en fonction d'une action
- */
 void ActionHandler::updateCursor(QAction *newAction) {
     if (cursors.contains(newAction)) {
+        //signal pour changer le curseur
         emit cursorChanged(cursors[newAction]);
     }
 }
 
-/**
- * @brief Action actuelle
- */
 QAction* ActionHandler::getCurrentAction() const {
     return currentAction;
 }

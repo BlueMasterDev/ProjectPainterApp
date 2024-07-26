@@ -1,8 +1,3 @@
-/**
- * @file actionhandler.h
- * @brief Fichier pour la classe ActionHandler
- */
-
 #ifndef ACTIONHANDLER_H
 #define ACTIONHANDLER_H
 
@@ -11,22 +6,19 @@
 #include <QMap>
 #include <QCursor>
 
-/**
- * @class ActionHandler
- * @brief Classe pour gérer les actions de la menuBar
- */
 class ActionHandler : public QObject {
     Q_OBJECT
 
 public:
     explicit ActionHandler(QObject *parent = nullptr);
 
+    // Configure les actions avec leurs icônes et les curseurs associés
     void configureActions(const QList<QAction*>& actions);
 
     QAction* getCurrentAction() const;
 
 signals:
-    void cursorChanged(const QCursor& cursor);
+    void cursorChanged(const QCursor& cursor); // Signal émis lorsque le curseur doit être changé
 
 public slots:
     void onActionTriggered();
@@ -37,7 +29,8 @@ private:
 
     QMap<QAction*, QString> initialIcons;
     QMap<QAction*, QString> activeIcons;
-    QMap<QAction*, QCursor> cursors;
+    QMap<QAction*, QCursor> cursors;      // Map des actions aux curseurs
+
     QAction *currentAction;
 };
 

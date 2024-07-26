@@ -1,5 +1,5 @@
 /**
- * @file graphics_save_load.cpp
+ * @file graphics_save_load.h
  * @brief Description de la classe graphics_save_load
 */
 #include "graphics_save_load.h"
