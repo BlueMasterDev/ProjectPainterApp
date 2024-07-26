@@ -15,6 +15,14 @@
 #include <actionhandler.h>
 #include "graphics_save_load.h"
 #include "customgraphicsview.h"
+#include <QListWidget>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsRectItem>
+#include <QGraphicsPolygonItem>
+#include <QMimeData>
+#include <QDrag>
+#include <QDropEvent>
+#include <QPolygonF>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,6 +39,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void setListWidgetItems();
 
 private slots:
     // Pen Properties
@@ -74,11 +84,13 @@ private:
     QGraphicsItemGroup* lineGrid;
     ActionHandler *actionHandler;
     // QColor selectedColor_2;
-
-    void setupActions();
     Graphics_Save_Load *graphics_Save_Load;
+    QListWidget *listWidget;
 
-    void setDefaultScene();
+	void setupActions();
+    QPointF mapToScene(QPoint);
+	
+	void setDefaultScene();
 };
 
 #endif // MAINWINDOW_H
