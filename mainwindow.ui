@@ -494,6 +494,7 @@
    </attribute>
    <addaction name="actionSave"/>
    <addaction name="actionLoad"/>
+   <addaction name="actionQuit"/>
    <addaction name="separator"/>
    <addaction name="actionCopy"/>
    <addaction name="actionCut"/>

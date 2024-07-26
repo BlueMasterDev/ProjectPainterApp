@@ -7,16 +7,17 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "customgraphicsview.h"
-
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QColor>
+#include <QAction>
+#include <actionhandler.h>
+#include "graphics_save_load.h"
+#include "customgraphicsview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
-
 
 /**
  * @class MainWindow
@@ -33,6 +34,8 @@ public:
 private slots:
     // Pen Properties
     void onColorButtonClicked();
+
+    // void onColorButton_2Clicked();
     void on_penWidthSpinBox_valueChanged(int arg1);
     void on_penWidthSpinBox_textChanged(const QString &arg1);
     void on_colorButton_1_clicked();
@@ -44,14 +47,30 @@ private slots:
     void on_colorButton_7_clicked();
     void on_penStyleComboBox_currentIndexChanged(int index);
 
-    // void onColorButton_2Clicked();
+    // Files Properties
+    void on_actionQuit_triggered();
+    void on_actionSave_triggered();
+    void on_actionLoad_triggered();
+    void on_actionAdd_image_triggered();
+    void on_actionAbout_this_app_triggered();
+
+    //Cursor and actions update
+    void onActionTriggered();
+    void updateCursor(const QCursor& cursor); // Slot pour mettre à jour le curseur
+
+
 
 private:
     Ui::MainWindow *ui;
     CustomGraphicsView *customView;
     QGraphicsScene *scene;
     QColor selectedColor;
+    ActionHandler *actionHandler;
     // QColor selectedColor_2;
+
+    void setupActions();
+    Graphics_Save_Load *graphics_Save_Load;
+
 };
 
 #endif // MAINWINDOW_H

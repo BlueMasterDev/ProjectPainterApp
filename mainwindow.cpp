@@ -8,6 +8,10 @@
 
 #include <QColorDialog>
 #include <QPen>
+#include <QIcon>
+#include <QMessageBox>
+#include <QClipboard>
+#include <QFileDialog>
 
 
 /**
@@ -17,6 +21,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , actionHandler(new ActionHandler(this))
     , selectedColor(Qt::black)
     // , selectedColor_2(Qt::yellow)
 {
@@ -24,14 +29,27 @@ MainWindow::MainWindow(QWidget *parent)
 
     customView = new CustomGraphicsView(selectedColor,ui->penWidthSpinBox->value(), ui->penStyleComboBox->currentIndex(), this);
     scene = new QGraphicsScene(this);
+
     customView->setScene(scene);
 
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
     ui->graphicsView = nullptr;
 
+    graphics_Save_Load = new Graphics_Save_Load(customView);
+
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
+
+
+    //les actions et les icônes
+    setupActions();
+
+    //maj curseur lié aux actions
+    connect(actionHandler, &ActionHandler::cursorChanged, this, &MainWindow::updateCursor);
+
+
     // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
+
 }
 
 /**
@@ -40,6 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete graphics_Save_Load;
 }
 
 // -----------------------------------------------------------------------------------------------------------------
@@ -147,14 +166,64 @@ void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
 }
 
 // -----------------------------------------------------------------------------------------------------------------
+// File Properties - About
 
+void MainWindow::on_actionSave_triggered()
+{
+    QString filePath = QFileDialog::getSaveFileName(this, "Save File", "NomImage", "Images (*.png *.jpg)");
+    if (!filePath.isEmpty()) {
+        graphics_Save_Load->saveScene(filePath);
+    }
+}
+
+void MainWindow::on_actionLoad_triggered()
+{
+    QString filePath = QFileDialog::getOpenFileName(this, "Load File", "", "Images (*.png *.jpg)");
+    if (!filePath.isEmpty()) {
+        graphics_Save_Load->loadScene(filePath);
+    }
+}
+
+void MainWindow::on_actionAdd_image_triggered()
+{
+    QString filePath = QFileDialog::getOpenFileName(this, "Add File", "", "Images (*.png *.jpg)");
+    if (!filePath.isEmpty()) {
+        graphics_Save_Load->addImage(filePath);
+    }
+}
+
+void MainWindow::on_actionAbout_this_app_triggered()
+{
+    QMessageBox::about(this, "Message", "Membre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
+}
+
+void MainWindow::on_actionQuit_triggered()
+{
+    QApplication::quit();
+}
+
+// -----------------------------------------------------------------------------------------------------------------
+
+void MainWindow::setupActions() {
+    // Liste des actions
+    QList<QAction*> actions = { ui->actionEraser, ui->actionCursor, ui->actionPen, ui->actionEllipse, ui->actionStar, ui->actionRectangle };
+    actionHandler->configureActions(actions);
+}
+
+void MainWindow::onActionTriggered() {
+    QAction *action = qobject_cast<QAction*>(sender());
+    if (action) {
+        // Met à jour l'icône et le curseur dans ActionHandler
+        actionHandler->onActionTriggered();
+    }
+}
+
+void MainWindow::updateCursor(const QCursor& cursor) {
+    // Mettre à jour le curseur de la vue graphique
+    customView->setCursor(cursor);
+}
+
+// -----------------------------------------------------------------------
 // void MainWindow::onColorButton_2Clicked()
 // {
 //     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
-
-//     if (color.isValid()) {
-//         selectedColor_2 = color;
-//         ui->toolButton_2->setStyleSheet(QString("background-color: %1").arg(color.name()));
-//         dynamic_cast<CustomGraphicsView*>(ui->graphicsView)->setPenColor(color);
-//     }
-// }
