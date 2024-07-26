@@ -10,7 +10,15 @@
 #include <QStack>
 #include <QMouseEvent>
 #include <QGraphicsRectItem>
+#include <QListWidget>
+#include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
+#include <QGraphicsPolygonItem>
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QMimeData>
+#include <QMouseEvent>
+
 
 
 /**
@@ -39,6 +47,14 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dragLeaveEvent(QDragLeaveEvent *event) override;
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
+
+
+signals:
+    void itemDrop(QString);
 
 private:
     bool drawing;

@@ -12,6 +12,8 @@
 #include <QMessageBox>
 #include <QClipboard>
 #include <QFileDialog>
+#include <QGraphicsView>
+#include <QGraphicsScene>
 
 
 /**
@@ -38,17 +40,14 @@ MainWindow::MainWindow(QWidget *parent)
     graphics_Save_Load = new Graphics_Save_Load(customView);
 
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
-
-
-    //les actions et les icônes
-
     setupActions();
     connect(actionHandler, &ActionHandler::cursorChanged, this, &MainWindow::updateCursor);
     connect(ui->actionUndo, &QAction::triggered, customView, &CustomGraphicsView::undo);
     connect(ui->actionRedo, &QAction::triggered, customView, &CustomGraphicsView::redo);
-
-    // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
-
+ 
+    // Initialisation de la ListWidget avec tous les items
+    setListWidgetItems();
+    customView->setAcceptDrops(true);
 }
 
 /**
@@ -58,6 +57,44 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete graphics_Save_Load;
+}
+
+void MainWindow::setListWidgetItems()
+{
+    listWidget = ui->listWidgetShapeItems;
+
+    // Mise en place des icônes pour les items
+    QPixmap pixLearn(":/images/images/quick.png");
+    QPixmap pixEllipse(":/images/images/circle.png");
+    QPixmap pixRect(":/images/images/rectangle.png");
+    QPixmap pixStar(":/images/images/star.png");
+
+    // Création des items pour la listwidget
+    QListWidgetItem *itemLearn = new QListWidgetItem;
+    QListWidgetItem *itemEllipse = new QListWidgetItem;
+    QListWidgetItem *itemRect = new QListWidgetItem;
+    QListWidgetItem *itemStar = new QListWidgetItem;
+
+    // Application des icônes pour tous les items
+    itemLearn->setIcon(pixLearn);
+    itemEllipse->setIcon(pixEllipse);
+    itemRect->setIcon(pixRect);
+    itemStar->setIcon(pixStar);
+
+    // Application du texte pour tous les items
+    itemLearn->setText("Learn");
+    itemEllipse->setText("Ellipse");
+    itemRect->setText("Rectangle");
+    itemStar->setText("Star");
+
+    // Ajout de tous les items dans la listwidget
+    listWidget->addItem(itemLearn);
+    listWidget->addItem(itemEllipse);
+    listWidget->addItem(itemRect);
+    listWidget->addItem(itemStar);
+
+    // Activation du drag and drop
+    listWidget->setDragEnabled(true);
 }
 
 // -----------------------------------------------------------------------------------------------------------------
@@ -235,3 +272,4 @@ void MainWindow::onActionTriggered() {
 void MainWindow::updateCursor(const QCursor& cursor) {
     customView->setCursor(cursor);
 }
+

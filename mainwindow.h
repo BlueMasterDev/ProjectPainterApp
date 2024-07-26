@@ -14,6 +14,14 @@
 #include <actionhandler.h>
 #include "graphics_save_load.h"
 #include "customgraphicsview.h"
+#include <QListWidget>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsRectItem>
+#include <QGraphicsPolygonItem>
+#include <QMimeData>
+#include <QDrag>
+#include <QDropEvent>
+#include <QPolygonF>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,6 +38,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void setListWidgetItems();
 
 private slots:
     // Pen Properties
@@ -58,8 +68,6 @@ private slots:
     void onActionTriggered();
     void updateCursor(const QCursor& cursor); // Slot pour mettre à jour le curseur
 
-
-
 private:
     Ui::MainWindow *ui;
     CustomGraphicsView *customView;
@@ -67,10 +75,12 @@ private:
     QColor selectedColor;
     ActionHandler *actionHandler;
     // QColor selectedColor_2;
-
     void setupActions();
-    Graphics_Save_Load *graphics_Save_Load;
 
+    Graphics_Save_Load *graphics_Save_Load;
+    QListWidget *listWidget;
+
+    QPointF mapToScene(QPoint);
 };
 
 #endif // MAINWINDOW_H
