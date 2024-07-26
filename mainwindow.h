@@ -58,15 +58,12 @@ private slots:
     void onActionTriggered();
     void updateCursor(const QCursor& cursor); // Slot pour mettre à jour le curseur
 
-
-
 private:
     Ui::MainWindow *ui;
     CustomGraphicsView *customView;
     QGraphicsScene *scene;
     QColor selectedColor;
     ActionHandler *actionHandler;
-    // QColor selectedColor_2;
 
     void setupActions();
     Graphics_Save_Load *graphics_Save_Load;

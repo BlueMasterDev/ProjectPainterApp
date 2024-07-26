@@ -83,7 +83,8 @@ void CustomGraphicsView::mousePressEvent(QMouseEvent *event)
             currentItem = scene()->addRect(QRectF(lastPoint, lastPoint), pen);
             break;
         case Ellipse:
-            currentItem = scene()->addEllipse(QRectF(lastPoint, lastPoint), pen);
+            currentItem = scene()->addEllipse(lastPoint.x(), lastPoint.y(), 0, 0, pen);
+            // currentItem = scene()->addEllipse(100 ,100 , 100, 100, pen);
             break;
         default:
             break;
@@ -112,7 +113,11 @@ void CustomGraphicsView::mouseMoveEvent(QMouseEvent *event)
             break;
         case Ellipse:
             if (QGraphicsEllipseItem *ellipse = qgraphicsitem_cast<QGraphicsEllipseItem*>(currentItem)) {
-                ellipse->setRect(QRectF(lastPoint, currentPoint).normalized());
+                qreal x = std::min(lastPoint.x(), currentPoint.x());
+                qreal y = std::min(lastPoint.y(), currentPoint.y());
+                qreal w = std::abs(lastPoint.x() - currentPoint.x());
+                qreal h = std::abs(lastPoint.y() - currentPoint.y());
+                ellipse->setRect(x, y, w, h);
             }
             break;
         default:
