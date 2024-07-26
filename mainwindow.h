@@ -1,3 +1,9 @@
+/**
+ * @file mainwindow.h
+ * @brief Fichier pour la classe MainWindow
+ */
+
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -21,6 +27,10 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+/**
+ * @class MainWindow
+ * @brief Classe pour la fenêtre de l'application qui est dérivée de la classe QMainWindow
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

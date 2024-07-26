@@ -1,3 +1,8 @@
+/**
+ * @file customgraphicsview.h
+ * @brief Fichier pour la classe CustomGraphicsView
+ */
+
 #ifndef CUSTOMGRAPHICSVIEW_H
 #define CUSTOMGRAPHICSVIEW_H
 
@@ -10,7 +15,13 @@
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QMimeData>
+#include <QMouseEvent>
 
+
+/**
+ * @class CustomGraphicsView
+ * @brief Classe pour la zone de dessin qui est dérivée de la classe QGraphicsView
+ */
 class CustomGraphicsView : public QGraphicsView
 {
     Q_OBJECT
@@ -22,6 +33,9 @@ public:
     void setPenColor(const QColor &color);
     void setPenWidth(int width);
     void setPenStyle(int styleIndex);
+
+    enum DrawShape { None, Pen, Rectangle, Ellipse };
+    void setDrawShape(DrawShape shape);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -40,6 +54,8 @@ private:
     bool drawing;
     QPointF lastPoint;
     QPen pen;
+    DrawShape currentShape;
+    QGraphicsItem *currentItem;
 };
 
 #endif // CUSTOMGRAPHICSVIEW_H
