@@ -97,25 +97,14 @@ void CustomGraphicsView::mousePressEvent(QMouseEvent *event)
  */
 void CustomGraphicsView::mouseMoveEvent(QMouseEvent *event)
 {
-    // if ((event->buttons() & Qt::LeftButton) && drawing) {
-    //     QPointF currentPoint = mapToScene(event->pos());
-    //     scene()->addLine(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y(), pen);
-    //     lastPoint = currentPoint;
-    // }
-    //if ((event->buttons() & Qt::LeftButton) && drawing) {
-        QPointF currentPoint = mapToScene(event->pos());
-        //QGraphicsLineItem* line = new QGraphicsLineItem(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y());
-        //line->setPen(pen);
-
-        scene()->addItem(line);
-        //itemStack.push(line);
-        //lastPoint = currentPoint;
-    //}
+    QPointF currentPoint = mapToScene(event->pos());
+    QGraphicsLineItem* line = nullptr;
         switch (currentShape) {
         case Pen:
-            QGraphicsLineItem* line = new QGraphicsLineItem(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y());
+            currentPoint = mapToScene(event->pos());
+            line = new QGraphicsLineItem(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y());
             itemStack.push(line);
-            scene()->addLine(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y(), pen);
+            scene()->addItem(line);
             lastPoint = currentPoint;
             break;
         case Rectangle:
