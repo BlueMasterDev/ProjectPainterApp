@@ -103,6 +103,7 @@ void CustomGraphicsView::mouseMoveEvent(QMouseEvent *event)
         case Pen:
             currentPoint = mapToScene(event->pos());
             line = new QGraphicsLineItem(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y());
+            line->setPen(pen);
             itemStack.push(line);
             scene()->addItem(line);
             lastPoint = currentPoint;
