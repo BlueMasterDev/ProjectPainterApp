@@ -172,6 +172,14 @@ void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
 }
 
 // -----------------------------------------------------------------------------------------------------------------
+// Canvas Properties
+
+void MainWindow::on_centerSceneButton_clicked()
+{
+    customView->centerOn(scene->sceneRect().center());
+}
+
+// -----------------------------------------------------------------------------------------------------------------
 // File Properties - About
 
 void MainWindow::on_actionSave_triggered()
