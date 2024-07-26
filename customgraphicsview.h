@@ -2,6 +2,9 @@
 #define CUSTOMGRAPHICSVIEW_H
 
 #include <QGraphicsView>
+#include <QMouseEvent>
+#include <QGraphicsRectItem>
+#include <QGraphicsEllipseItem>
 
 class CustomGraphicsView : public QGraphicsView
 {
@@ -15,6 +18,9 @@ public:
     void setPenWidth(int width);
     void setPenStyle(int styleIndex);
 
+    enum DrawShape { None, Pen, Rectangle, Ellipse };
+    void setDrawShape(DrawShape shape);
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -24,6 +30,8 @@ private:
     bool drawing;
     QPointF lastPoint;
     QPen pen;
+    DrawShape currentShape;
+    QGraphicsItem *currentItem;
 };
 
 #endif // CUSTOMGRAPHICSVIEW_H

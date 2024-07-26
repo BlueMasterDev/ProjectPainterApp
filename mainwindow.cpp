@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , actionHandler(new ActionHandler(this))
     , selectedColor(Qt::black)
-    // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
 
@@ -31,16 +30,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
 
-
     //les actions et les icônes
     setupActions();
 
     //maj curseur lié aux actions
     connect(actionHandler, &ActionHandler::cursorChanged, this, &MainWindow::updateCursor);
-
-
-    // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
-
 }
 
 MainWindow::~MainWindow()
@@ -62,7 +56,6 @@ void MainWindow::onColorButtonClicked()
         customView->setPenColor(color);
     }
 }
-
 
 void MainWindow::on_penWidthSpinBox_valueChanged(int arg1)
 {
@@ -152,11 +145,17 @@ void MainWindow::on_actionQuit_triggered()
 }
 
 // -----------------------------------------------------------------------------------------------------------------
+// Draw Forms
 
 void MainWindow::setupActions() {
     // Liste des actions
     QList<QAction*> actions = { ui->actionEraser, ui->actionCursor, ui->actionPen, ui->actionEllipse, ui->actionStar, ui->actionRectangle };
     actionHandler->configureActions(actions);
+
+    // Connecter les actions dans l'UI
+    connect(ui->actionPen, &QAction::triggered, this, [this]() { customView->setDrawShape(CustomGraphicsView::Pen); });
+    connect(ui->actionRectangle, &QAction::triggered, this, [this]() { customView->setDrawShape(CustomGraphicsView::Rectangle); });
+    connect(ui->actionEllipse, &QAction::triggered, this, [this]() { customView->setDrawShape(CustomGraphicsView::Ellipse); });
 }
 
 void MainWindow::onActionTriggered() {
@@ -171,8 +170,3 @@ void MainWindow::updateCursor(const QCursor& cursor) {
     // Mettre à jour le curseur de la vue graphique
     customView->setCursor(cursor);
 }
-
-// -----------------------------------------------------------------------
-// void MainWindow::onColorButton_2Clicked()
-// {
-//     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
