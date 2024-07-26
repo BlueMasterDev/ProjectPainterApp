@@ -12,7 +12,7 @@
  * @param parent : widget parent
  */
 CustomGraphicsView::CustomGraphicsView(QWidget *parent)
-    : QGraphicsView(parent), drawing(false)
+    : QGraphicsView(parent), drawing(false), currentShape(None), currentItem(nullptr)
 {
     pen.setColor(Qt::black);
     pen.setWidth(5);
@@ -26,7 +26,7 @@ CustomGraphicsView::CustomGraphicsView(QWidget *parent)
  * @param parent : widget parent
  */
 CustomGraphicsView::CustomGraphicsView(QColor defaultPenColor, int defaultPenWidth, int defaultPenStyleIndex, QWidget *parent)
-    : QGraphicsView(parent), drawing(false)
+    : QGraphicsView(parent), drawing(false), currentShape(None), currentItem(nullptr)
 {
     pen.setColor(defaultPenColor);
     pen.setWidth(defaultPenWidth);
@@ -62,15 +62,32 @@ void CustomGraphicsView::setPenStyle(int styleIndex)
     pen.setStyle(static_cast<Qt::PenStyle>(styleIndex + 1)); // in Qt::PenStyle 0 is no pen so we don't use it
 }
 
+void CustomGraphicsView::setDrawShape(DrawShape shape)
+{
+    currentShape = shape;
+}
+
 /**
  * @brief Gestion du clic gauche de la souris (pression) pour le dessin
  * @param event : evenement de la souris
  */
+
 void CustomGraphicsView::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
         drawing = true;
         lastPoint = mapToScene(event->pos());
+
+        switch (currentShape) {
+        case Rectangle:
+            currentItem = scene()->addRect(QRectF(lastPoint, lastPoint), pen);
+            break;
+        case Ellipse:
+            currentItem = scene()->addEllipse(QRectF(lastPoint, lastPoint), pen);
+            break;
+        default:
+            break;
+        }
     }
 }
 
@@ -85,16 +102,36 @@ void CustomGraphicsView::mouseMoveEvent(QMouseEvent *event)
     //     scene()->addLine(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y(), pen);
     //     lastPoint = currentPoint;
     // }
-    if ((event->buttons() & Qt::LeftButton) && drawing) {
+    //if ((event->buttons() & Qt::LeftButton) && drawing) {
         QPointF currentPoint = mapToScene(event->pos());
-        QGraphicsLineItem* line = new QGraphicsLineItem(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y());
-        line->setPen(pen);
+        //QGraphicsLineItem* line = new QGraphicsLineItem(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y());
+        //line->setPen(pen);
 
         scene()->addItem(line);
-        itemStack.push(line);
+        //itemStack.push(line);
+        //lastPoint = currentPoint;
+    //}
+        switch (currentShape) {
+        case Pen:
+            QGraphicsLineItem* line = new QGraphicsLineItem(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y());
+            itemStack.push(line);
+            scene()->addLine(lastPoint.x(), lastPoint.y(), currentPoint.x(), currentPoint.y(), pen);
+            lastPoint = currentPoint;
+            break;
+        case Rectangle:
+            if (QGraphicsRectItem *rect = qgraphicsitem_cast<QGraphicsRectItem*>(currentItem)) {
+                rect->setRect(QRectF(lastPoint, currentPoint).normalized());
+            }
+            break;
+        case Ellipse:
+            if (QGraphicsEllipseItem *ellipse = qgraphicsitem_cast<QGraphicsEllipseItem*>(currentItem)) {
+                ellipse->setRect(QRectF(lastPoint, currentPoint).normalized());
+            }
+            break;
+        default:
+            break;
+        }
 
-        lastPoint = currentPoint;
-    }
 }
 
 /**
@@ -105,6 +142,7 @@ void CustomGraphicsView::mouseReleaseEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton && drawing) {
         drawing = false;
+        currentItem = nullptr;
     }
 }
 

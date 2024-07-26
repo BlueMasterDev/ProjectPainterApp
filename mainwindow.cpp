@@ -23,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , actionHandler(new ActionHandler(this))
     , selectedColor(Qt::black)
-    // , selectedColor_2(Qt::yellow)
 {
     ui->setupUi(this);
 
@@ -39,6 +38,9 @@ MainWindow::MainWindow(QWidget *parent)
     graphics_Save_Load = new Graphics_Save_Load(customView);
 
     connect(ui->penColorButton, &QPushButton::clicked, this, &MainWindow::onColorButtonClicked);
+
+
+    //les actions et les icônes
 
     setupActions();
     connect(actionHandler, &ActionHandler::cursorChanged, this, &MainWindow::updateCursor);
@@ -78,6 +80,7 @@ void MainWindow::onColorButtonClicked()
 /**
  * @brief Action qui se déclenche lorsque l'on incrémente ou décrémente le champs contenant la largeur du crayon.
  */
+
 void MainWindow::on_penWidthSpinBox_valueChanged(int arg1)
 {
     customView->setPenWidth(arg1);
@@ -191,7 +194,7 @@ void MainWindow::on_actionAdd_image_triggered()
 
 void MainWindow::on_actionAbout_this_app_triggered()
 {
-    QMessageBox::about(this, "Message", "Membre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
+    QMessageBox::about(this, "Message", "Projet Dessin dans le cadre de la formation POEI module QT C++ \n\nMembre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -201,6 +204,7 @@ void MainWindow::on_actionQuit_triggered()
 
 // -----------------------------------------------------------------------------------------------------------------
 // Actions on menuBar
+// Draw Forms
 
 
 /**
@@ -209,7 +213,10 @@ void MainWindow::on_actionQuit_triggered()
 void MainWindow::setupActions() {
     QList<QAction*> actions = { ui->actionEraser, ui->actionCursor, ui->actionPen, ui->actionEllipse, ui->actionStar, ui->actionRectangle};
     actionHandler->configureActions(actions);
-
+    // Connecter les actions dans l'UI
+    connect(ui->actionPen, &QAction::triggered, this, [this]() { customView->setDrawShape(CustomGraphicsView::Pen); });
+    connect(ui->actionRectangle, &QAction::triggered, this, [this]() { customView->setDrawShape(CustomGraphicsView::Rectangle); });
+    connect(ui->actionEllipse, &QAction::triggered, this, [this]() { customView->setDrawShape(CustomGraphicsView::Ellipse); });
 }
 
 /**
@@ -228,8 +235,3 @@ void MainWindow::onActionTriggered() {
 void MainWindow::updateCursor(const QCursor& cursor) {
     customView->setCursor(cursor);
 }
-
-// -----------------------------------------------------------------------
-// void MainWindow::onColorButton_2Clicked()
-// {
-//     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");

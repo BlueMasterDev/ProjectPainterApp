@@ -8,6 +8,10 @@
 
 #include <QGraphicsView>
 #include <QStack>
+#include <QMouseEvent>
+#include <QGraphicsRectItem>
+#include <QGraphicsEllipseItem>
+
 
 /**
  * @class CustomGraphicsView
@@ -28,6 +32,9 @@ public:
     void undo();
     void redo();
 
+    enum DrawShape { None, Pen, Rectangle, Ellipse };
+    void setDrawShape(DrawShape shape);
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -37,9 +44,13 @@ private:
     bool drawing;
     QPointF lastPoint;
     QPen pen;
+
     //undo action
-    QStack<QGraphicsItem*> itemStack; // Pile pour stocker les éléments dessinés
+    QStack<QGraphicsItem*> itemStack;
     QStack<QGraphicsItem*> redoStack;
+    DrawShape currentShape;
+    QGraphicsItem *currentItem;
+
 };
 
 #endif // CUSTOMGRAPHICSVIEW_H
