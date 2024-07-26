@@ -1,0 +1,94 @@
+\doxysection{Graphics\+\_\+\+Save\+\_\+\+Load Class Reference}
+\hypertarget{class_graphics___save___load}{}\label{class_graphics___save___load}\index{Graphics\_Save\_Load@{Graphics\_Save\_Load}}
+
+
+classe qui sauvegarde et charge des fichiers existants  
+
+
+
+
+{\ttfamily \#include $<$graphics\+\_\+save\+\_\+load.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_graphics___save___load_abe79defb6bc0bb015630da210fa930a9}\label{class_graphics___save___load_abe79defb6bc0bb015630da210fa930a9} 
+{\bfseries Graphics\+\_\+\+Save\+\_\+\+Load} (QGraphics\+View \texorpdfstring{$\ast$}{*}view)
+\item 
+bool \mbox{\hyperlink{class_graphics___save___load_ad34942ca2ecc4b3873bd30f8b6c94a50}{save\+Scene}} (const QString \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Save the drawing area. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graphics___save___load_a33475579bd715368d2e67a293c17d167}{load\+Scene}} (const QString \&file\+Path)
+\begin{DoxyCompactList}\small\item\em load Image \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graphics___save___load_a7f0488cb5283ac3d61a217cbfba21612}{add\+Image}} (const QString \&file\+Path)
+\begin{DoxyCompactList}\small\item\em Add Image to graphics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+classe qui sauvegarde et charge des fichiers existants 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graphics___save___load_a7f0488cb5283ac3d61a217cbfba21612}\index{Graphics\_Save\_Load@{Graphics\_Save\_Load}!addImage@{addImage}}
+\index{addImage@{addImage}!Graphics\_Save\_Load@{Graphics\_Save\_Load}}
+\doxysubsubsection{\texorpdfstring{addImage()}{addImage()}}
+{\footnotesize\ttfamily \label{class_graphics___save___load_a7f0488cb5283ac3d61a217cbfba21612} 
+bool Graphics\+\_\+\+Save\+\_\+\+Load\+::add\+Image (\begin{DoxyParamCaption}\item[{const QString \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Add Image to graphics. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QString} & \&file\+Path chemin du fichier à ajouter \\
+\hline
+\end{DoxyParams}
+Charger l\textquotesingle{}image
+
+Ajouter l\textquotesingle{}image à la scène\Hypertarget{class_graphics___save___load_a33475579bd715368d2e67a293c17d167}\index{Graphics\_Save\_Load@{Graphics\_Save\_Load}!loadScene@{loadScene}}
+\index{loadScene@{loadScene}!Graphics\_Save\_Load@{Graphics\_Save\_Load}}
+\doxysubsubsection{\texorpdfstring{loadScene()}{loadScene()}}
+{\footnotesize\ttfamily \label{class_graphics___save___load_a33475579bd715368d2e67a293c17d167} 
+bool Graphics\+\_\+\+Save\+\_\+\+Load\+::load\+Scene (\begin{DoxyParamCaption}\item[{const QString \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+load Image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QString} & \&file\+Path -\/ chemin du fichier à charger \\
+\hline
+\end{DoxyParams}
+Charger l\textquotesingle{}image
+
+Effacer la scène actuelle
+
+Ajouter l\textquotesingle{}image à la scène\Hypertarget{class_graphics___save___load_ad34942ca2ecc4b3873bd30f8b6c94a50}\index{Graphics\_Save\_Load@{Graphics\_Save\_Load}!saveScene@{saveScene}}
+\index{saveScene@{saveScene}!Graphics\_Save\_Load@{Graphics\_Save\_Load}}
+\doxysubsubsection{\texorpdfstring{saveScene()}{saveScene()}}
+{\footnotesize\ttfamily \label{class_graphics___save___load_ad34942ca2ecc4b3873bd30f8b6c94a50} 
+bool Graphics\+\_\+\+Save\+\_\+\+Load\+::save\+Scene (\begin{DoxyParamCaption}\item[{const QString \&}]{file\+Path}{}\end{DoxyParamCaption})}
+
+
+
+Save the drawing area. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em QString} & \&file\+Path -\/\texorpdfstring{$>$}{>} chemin du fichier charger \\
+\hline
+\end{DoxyParams}
+Déterminer la zone de la scène à capturer
+
+Créer une image de la taille de la scène
+
+Remplir avec une couleur blanche
+
+Créer un painter pour dessiner la scène dans l\textquotesingle{}image
+
+Sauvegarder l\textquotesingle{}image dans le fichier spécifié
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/\mbox{\hyperlink{graphics__save__load_8h}{graphics\+\_\+save\+\_\+load.\+h}}\item 
+C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/\mbox{\hyperlink{graphics__save__load_8cpp}{graphics\+\_\+save\+\_\+load.\+cpp}}\end{DoxyCompactItemize}

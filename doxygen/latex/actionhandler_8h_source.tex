@@ -1,0 +1,41 @@
+\doxysection{C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/actionhandler.h}
+\hypertarget{actionhandler_8h_source}{}\label{actionhandler_8h_source}\mbox{\hyperlink{actionhandler_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ ACTIONHANDLER\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ ACTIONHANDLER\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QAction>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QMap>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QCursor>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_action_handler}{ActionHandler}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_action_handler_a197c4b7d117f95af79606d9aeee49830}{ActionHandler}}(QObject\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_action_handler_a87c75270e1c0f980ae8635e448150021}{configureActions}}(\textcolor{keyword}{const}\ QList<QAction*>\&\ actions);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ QAction*\ \mbox{\hyperlink{class_action_handler_a0f24a58a121a8288d10329a74b241587}{getCurrentAction}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ signals:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ cursorChanged(\textcolor{keyword}{const}\ QCursor\&\ cursor);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_action_handler_a5a626be298c6b1c09ad2ca4eccfa89b0}{onActionTriggered}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ updateIcon(QAction\ *newAction);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ updateCursor(QAction\ *newAction);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ QMap<QAction*,\ QString>\ initialIcons;}
+\DoxyCodeLine{00039\ \ \ \ \ QMap<QAction*,\ QString>\ activeIcons;}
+\DoxyCodeLine{00040\ \ \ \ \ QMap<QAction*,\ QCursor>\ cursors;}
+\DoxyCodeLine{00041\ \ \ \ \ QAction\ *currentAction;}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ACTIONHANDLER\_H}}
+
+\end{DoxyCode}

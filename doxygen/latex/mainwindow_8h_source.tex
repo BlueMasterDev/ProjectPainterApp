@@ -1,0 +1,92 @@
+\doxysection{C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/mainwindow.h}
+\hypertarget{mainwindow_8h_source}{}\label{mainwindow_8h_source}\mbox{\hyperlink{mainwindow_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QGraphicsScene>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QColor>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QAction>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{actionhandler_8h}{actionhandler.h}}>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graphics__save__load_8h}{graphics\_save\_load.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{customgraphicsview_8h}{customgraphicsview.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QListWidget>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QGraphicsEllipseItem>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <QGraphicsRectItem>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <QGraphicsPolygonItem>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <QMimeData>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <QDrag>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <QDropEvent>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <QPolygonF>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00028\ \textcolor{keyword}{namespace\ }Ui\ \{\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}};\ \}}
+\DoxyCodeLine{00029\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_window}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\string~MainWindow}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_window_a537785ecf2fb0ef20aa5525ea8f3d4d7}{setListWidgetItems}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ Pen\ Properties}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ onColorButtonClicked();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_penWidthSpinBox\_valueChanged(\textcolor{keywordtype}{int}\ arg1);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_penWidthSpinBox\_textChanged(\textcolor{keyword}{const}\ QString\ \&arg1);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_colorButton\_1\_clicked();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_colorButton\_2\_clicked();}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_colorButton\_3\_clicked();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_colorButton\_4\_clicked();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_colorButton\_5\_clicked();}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_colorButton\_6\_clicked();}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_colorButton\_7\_clicked();}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_penStyleComboBox\_currentIndexChanged(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Canvas\ Properties}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_showGridCheckBox\_stateChanged(\textcolor{keywordtype}{int}\ arg1);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_centerSceneButton\_clicked();}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_sceneBackgroundButton\_clicked();}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_eraseDrawingButton\_clicked();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Files\ Properties}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_actionQuit\_triggered();}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_actionSave\_triggered();}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_actionLoad\_triggered();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_actionAdd\_image\_triggered();}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ on\_actionAbout\_this\_app\_triggered();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//Cursor\ and\ actions\ update}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ onActionTriggered();}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ updateCursor(\textcolor{keyword}{const}\ QCursor\&\ cursor);\ \textcolor{comment}{//\ Slot\ pour\ mettre\ à\ jour\ le\ curseur}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ void\ onColorButton\_2Clicked();}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00079\ \ \ \ \ Ui::MainWindow\ *ui;}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_custom_graphics_view}{CustomGraphicsView}}\ *customView;}
+\DoxyCodeLine{00081\ \ \ \ \ QGraphicsScene\ *scene;}
+\DoxyCodeLine{00082\ \ \ \ \ QColor\ selectedColor;}
+\DoxyCodeLine{00083\ \ \ \ \ QColor\ backgroundColor;}
+\DoxyCodeLine{00084\ \ \ \ \ QGraphicsItemGroup*\ lineGrid;}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{class_action_handler}{ActionHandler}}\ *actionHandler;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ QColor\ selectedColor\_2;}}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{class_graphics___save___load}{Graphics\_Save\_Load}}\ *graphics\_Save\_Load;}
+\DoxyCodeLine{00088\ \ \ \ \ QListWidget\ *listWidget;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ setupActions();}
+\DoxyCodeLine{00091\ \ \ \ \ QPointF\ mapToScene(QPoint);}
+\DoxyCodeLine{00092\ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ setDefaultScene();}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,98 @@
+\doxysection{Action\+Handler Class Reference}
+\hypertarget{class_action_handler}{}\label{class_action_handler}\index{ActionHandler@{ActionHandler}}
+
+
+Classe pour gérer les actions de la menu\+Bar.  
+
+
+
+
+{\ttfamily \#include $<$actionhandler.\+h$>$}
+
+
+
+Inheritance diagram for Action\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{class_action_handler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Action\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{class_action_handler__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_action_handler_a5a626be298c6b1c09ad2ca4eccfa89b0}\label{class_action_handler_a5a626be298c6b1c09ad2ca4eccfa89b0} 
+void {\bfseries on\+Action\+Triggered} ()
+\begin{DoxyCompactList}\small\item\em Mise à jour de l\textquotesingle{}icone et du curseur après un clic sur l\textquotesingle{}action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_action_handler_a0bbed223212d8ee4e6a188a5b25455ef}\label{class_action_handler_a0bbed223212d8ee4e6a188a5b25455ef} 
+void {\bfseries cursor\+Changed} (const QCursor \&cursor)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_action_handler_a197c4b7d117f95af79606d9aeee49830}{Action\+Handler}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur de base de la classe \doxylink{class_action_handler}{Action\+Handler}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_action_handler_a87c75270e1c0f980ae8635e448150021}{configure\+Actions}} (const QList$<$ QAction \texorpdfstring{$\ast$}{*} $>$ \&actions)
+\begin{DoxyCompactList}\small\item\em Mise à jour des chemins des images à récupérer quand l\textquotesingle{}icone ou le curseur change. \end{DoxyCompactList}\item 
+\Hypertarget{class_action_handler_a0f24a58a121a8288d10329a74b241587}\label{class_action_handler_a0f24a58a121a8288d10329a74b241587} 
+QAction \texorpdfstring{$\ast$}{*} {\bfseries get\+Current\+Action} () const
+\begin{DoxyCompactList}\small\item\em Action actuelle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe pour gérer les actions de la menu\+Bar. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_action_handler_a197c4b7d117f95af79606d9aeee49830}\index{ActionHandler@{ActionHandler}!ActionHandler@{ActionHandler}}
+\index{ActionHandler@{ActionHandler}!ActionHandler@{ActionHandler}}
+\doxysubsubsection{\texorpdfstring{ActionHandler()}{ActionHandler()}}
+{\footnotesize\ttfamily \label{class_action_handler_a197c4b7d117f95af79606d9aeee49830} 
+Action\+Handler\+::\+Action\+Handler (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur de base de la classe \doxylink{class_action_handler}{Action\+Handler}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & \+: object parent \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_action_handler_a87c75270e1c0f980ae8635e448150021}\index{ActionHandler@{ActionHandler}!configureActions@{configureActions}}
+\index{configureActions@{configureActions}!ActionHandler@{ActionHandler}}
+\doxysubsubsection{\texorpdfstring{configureActions()}{configureActions()}}
+{\footnotesize\ttfamily \label{class_action_handler_a87c75270e1c0f980ae8635e448150021} 
+void Action\+Handler\+::configure\+Actions (\begin{DoxyParamCaption}\item[{const QList$<$ QAction \texorpdfstring{$\ast$}{*} $>$ \&}]{actions}{}\end{DoxyParamCaption})}
+
+
+
+Mise à jour des chemins des images à récupérer quand l\textquotesingle{}icone ou le curseur change. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actions} & \+: liste des actions de la barre de menu \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/\mbox{\hyperlink{actionhandler_8h}{actionhandler.\+h}}\item 
+C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/\mbox{\hyperlink{actionhandler_8cpp}{actionhandler.\+cpp}}\end{DoxyCompactItemize}
