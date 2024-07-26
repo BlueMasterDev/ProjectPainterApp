@@ -62,6 +62,10 @@ void CustomGraphicsView::setPenStyle(int styleIndex)
     pen.setStyle(static_cast<Qt::PenStyle>(styleIndex + 1)); // in Qt::PenStyle 0 is no pen so we don't use it
 }
 
+/**
+ * @brief Permet de définir le type de forme selectionner
+ * @param shape : correspondant à une valeur de l'enumération shape qui contient les formes possibles ( rien , crayon, rectangle, ellipse)
+ */
 void CustomGraphicsView::setDrawShape(DrawShape shape)
 {
     currentShape = shape;

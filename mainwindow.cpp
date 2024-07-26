@@ -13,7 +13,6 @@
 #include <QClipboard>
 #include <QFileDialog>
 
-
 /**
  * @brief Constructeur de base de MainWindow
  * @param parent : widget parent
@@ -163,6 +162,9 @@ void MainWindow::on_penStyleComboBox_currentIndexChanged(int index)
 // -----------------------------------------------------------------------------------------------------------------
 // File Properties - About
 
+/**
+ * @brief Action qui se déclenche lorqu'on fait une sauvegarde depuis la menu toolbar, il affiche une fenêtre dans lequel l'utilisateur peut enregistrer son image, par défaut le nom de l'image est NomImage, sous format PNJ
+ */
 void MainWindow::on_actionSave_triggered()
 {
     QString filePath = QFileDialog::getSaveFileName(this, "Save File", "NomImage", "Images (*.png *.jpg)");
@@ -171,6 +173,9 @@ void MainWindow::on_actionSave_triggered()
     }
 }
 
+/**
+ * @brief Action qui se déclenche lorqu'on fait un charger depuis la menu toolbar, il affiche une fenêtre dans lequel l'utilisateur peut charger un fichier de type PNJ
+ */
 void MainWindow::on_actionLoad_triggered()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Load File", "", "Images (*.png *.jpg)");
@@ -179,6 +184,9 @@ void MainWindow::on_actionLoad_triggered()
     }
 }
 
+/**
+ * @brief Action qui se déclenche lorqu'on fait un "ajout de fichier" depuis la menu toolbar, il affiche une fenêtre dans lequel l'utilisateur peut charger une image de type PNJ dans la zone de dessin actuel
+ */
 void MainWindow::on_actionAdd_image_triggered()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Add File", "", "Images (*.png *.jpg)");
@@ -187,11 +195,17 @@ void MainWindow::on_actionAdd_image_triggered()
     }
 }
 
+/**
+ * @brief Description du projet et des membres
+ */
 void MainWindow::on_actionAbout_this_app_triggered()
 {
     QMessageBox::about(this, "Message", "Projet Dessin dans le cadre de la formation POEI module QT C++ \n\nMembre du projet : \n\nMUKHTAR Masooma\nRENOU Noemie\nKITIHOUN Bryan\nJIN Laurent");
 }
 
+/**
+ * @brief Quitter l'application
+ */
 void MainWindow::on_actionQuit_triggered()
 {
     QApplication::quit();
