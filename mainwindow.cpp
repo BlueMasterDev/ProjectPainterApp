@@ -57,7 +57,6 @@ MainWindow::MainWindow(QWidget *parent)
         gridList.push_back(line);
     }
     lineGrid = scene->createItemGroup(gridList);
-    lineGrid->hide();
 
     ui->mainLayout->replaceWidget(ui->graphicsView, customView);
     delete ui->graphicsView;
