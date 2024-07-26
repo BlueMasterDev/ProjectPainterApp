@@ -58,8 +58,6 @@ private slots:
     void onActionTriggered();
     void updateCursor(const QCursor& cursor); // Slot pour mettre à jour le curseur
 
-
-
 private:
     Ui::MainWindow *ui;
     CustomGraphicsView *customView;
@@ -73,13 +71,6 @@ private:
     QListWidget *listWidget;
 
     QPointF mapToScene(QPoint);
-
-protected:
-    void mousePressEvent(QMouseEvent *event) override;
-    void dragEnterEvent(QDragEnterEvent *event) override;
-    void dragLeaveEvent(QDragLeaveEvent *event) override;
-    void dragMoveEvent(QDragMoveEvent *event) override;
-    void dropEvent(QDropEvent *event) override;
 };
 
 #endif // MAINWINDOW_H

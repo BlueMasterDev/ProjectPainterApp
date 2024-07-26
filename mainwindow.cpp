@@ -44,7 +44,6 @@ MainWindow::MainWindow(QWidget *parent)
     setListWidgetItems();
     customView->setAcceptDrops(true);
     // connect(ui->toolButton_2, &QPushButton::clicked, this, &MainWindow::onColorButton_2Clicked);
-
 }
 
 MainWindow::~MainWindow()
@@ -219,75 +218,3 @@ void MainWindow::updateCursor(const QCursor& cursor) {
 // {
 //     QColor color = QColorDialog::getColor(selectedColor_2, this, "Choose Color");
 
-
-// -----------------------------------------------------------------------------------------------------------------
-// Drag and Drop properties
-
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
-    qDebug() << "On start !";
-    QListWidgetItem *item = listWidget->currentItem();
-    if (item) {
-        qDebug() << "On item !";
-        QMimeData *mimeData = new QMimeData;
-        mimeData->setText(item->text());
-
-        QDrag *drag = new QDrag(this);
-        drag->setMimeData(mimeData);
-
-        Qt::DropAction dropAction = drag->exec();
-    }
-}
-
-void MainWindow::dragEnterEvent(QDragEnterEvent *event)
-{
-    qDebug() << "On DragEnterEvent !";
-    // if (event->mimeData()->hasText())
-    // {
-    //     qDebug() << "On Drag condition !";
-    //     event->acceptProposedAction();
-    // }
-    event->accept();
-    event->acceptProposedAction();
-}
-
-void MainWindow::dragLeaveEvent(QDragLeaveEvent *event)
-{
-    event->accept();
-}
-
-void MainWindow::dragMoveEvent(QDragMoveEvent *event)
-{
-    event->accept();
-    event->acceptProposedAction();
-}
-
-void MainWindow::dropEvent(QDropEvent *event)
-{
-    qDebug() << "On DropEvent !";
-
-    if (event->mimeData()->hasText()) {
-        QPointF position = customView->mapToScene(event->position().toPoint());
-        QString shapeType = event->mimeData()->text();
-
-        QGraphicsItem *item = nullptr;
-
-        if (shapeType == "Ellipse") {
-            item = customView->scene()->addEllipse(position.x(), position.y(), 100, 50, QPen(Qt::black), QBrush(Qt::green));
-        } else if (shapeType == "Rectangle") {
-            item = customView->scene()->addRect(position.x(), position.y(), 100, 50, QPen(Qt::black), QBrush(Qt::blue));
-        } else if (shapeType == "Star") {
-            QPolygonF star;
-            star << QPointF(0, 40) << QPointF(100, 40) << QPointF(20, -20)
-                 << QPointF(50, 100) << QPointF(80, -20) << QPointF(0, 40);
-            item = customView->scene()->addPolygon(star, QPen(Qt::black), QBrush(Qt::yellow));
-            item->setPos(position);
-        }
-
-        if (item) {
-            item->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-        }
-
-        event->acceptProposedAction();
-    }
-}
