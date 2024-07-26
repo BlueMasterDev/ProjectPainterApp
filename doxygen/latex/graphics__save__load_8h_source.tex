@@ -1,0 +1,29 @@
+\doxysection{C\+:/\+Users/laure/\+One\+Drive/\+Documents/c++/\+Chapitrer3 QT trad/\+Projet\+\_\+\+Inter\+\_\+final/\+Project\+Painter\+App/graphics\+\_\+save\+\_\+load.h}
+\hypertarget{graphics__save__load_8h_source}{}\label{graphics__save__load_8h_source}\mbox{\hyperlink{graphics__save__load_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ GRAPHICS\_SAVE\_LOAD\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ GRAPHICS\_SAVE\_LOAD\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QGraphicsView>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QGraphicsScene>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_graphics___save___load}{Graphics\_Save\_Load}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_graphics___save___load}{Graphics\_Save\_Load}}(QGraphicsView\ *view);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graphics___save___load_ad34942ca2ecc4b3873bd30f8b6c94a50}{saveScene}}(\textcolor{keyword}{const}\ QString\ \&filePath);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graphics___save___load_a33475579bd715368d2e67a293c17d167}{loadScene}}(\textcolor{keyword}{const}\ QString\ \&filePath);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_graphics___save___load_a7f0488cb5283ac3d61a217cbfba21612}{addImage}}(\textcolor{keyword}{const}\ QString\ \&filePath);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ QGraphicsView\ *graphicsView;}
+\DoxyCodeLine{00030\ \ \ \ \ QGraphicsScene\ *scene;}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GRAPHICS\_SAVE\_LOAD\_H}}
+
+\end{DoxyCode}
