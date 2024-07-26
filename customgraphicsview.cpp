@@ -81,9 +81,11 @@ void CustomGraphicsView::mousePressEvent(QMouseEvent *event)
         switch (currentShape) {
         case Rectangle:
             currentItem = scene()->addRect(QRectF(lastPoint, lastPoint), pen);
+            itemStack.push(currentItem);
             break;
         case Ellipse:
             currentItem = scene()->addEllipse(QRectF(lastPoint, lastPoint), pen);
+            itemStack.push(currentItem);
             break;
         default:
             break;
